@@ -11,7 +11,7 @@
 - Each member should prepare and be ready to discuss the completed tasks prior to each meeting.
 
 **Work Expectations**
-We should expect each member to work on the project during their own time and to continuously update the Slack group so that extra meetings remain redundant, providing more time to focus on the project itself (minimizes necessary meetings).
+- We should expect each member to work on the project during their own time and to continuously update the Slack group so that extra meetings remain redundant, providing more time to focus on the project itself (minimizes necessary meetings).
 
 **Distribution of Work**
 - Work should be distributed based on consensus agreements on what each individual may want to, offers to, or is requested to pursue. These will be established during our weekly meetings and noted in the tasks document in the repo.
