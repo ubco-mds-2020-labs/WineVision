@@ -44,5 +44,5 @@
 **How will the work be reviewed?**
 - Each member will be responsible for reviewing, testing and verifying other group members’ work.
 - Any problems noticed need to be brought up timely and discussed as a group.
-- Individuals assigned easier and less time consuming tasks may be expected to devote more time to quality control
+- Individuals assigned easier and less time consuming tasks may be expected to devote more time to quality control.
 
