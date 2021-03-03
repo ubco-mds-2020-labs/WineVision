@@ -36,7 +36,7 @@ def get_header(app):
                     ),
                 ],
                 className="twelve columns",
-                style={"padding-left": "0"},
+                style={"padding-left": "1"},
             ),
         ],
         className="row",
@@ -56,7 +56,12 @@ def get_menu():
                 "Interactive Graphics",
                 href="/WineVison/scr/intergraph",
                 className="tab",
-            )
+            ),
+            dcc.Link(
+                "Machine Learning",
+                href="/WineVison/scr/modelling",
+                className="tab",
+            ),
         ],
         className="row all-tabs",
     )
