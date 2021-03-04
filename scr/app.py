@@ -25,11 +25,9 @@ wine.head()
 
 app = dash.Dash(
     __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}],
-    suppress_callback_exceptions=True,
     external_stylesheets=["https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap-grid.min.css"]
 )
 server = app.server
-
 
 # Describe the layout/ UI of the app
 app.layout = html.Div(
@@ -137,7 +135,7 @@ def plot_altair_4(xcol,ycol):
     
     bars = alt.Chart(wine,title="Count of Each Quality Level of Wines").mark_bar().encode(y='Taste:N',
                                                                                           color='Taste:N',
-                                                                                          x='count(Taste):Q',tooltip='count(Taste):Q').transform_filter(brush)
+                                                                                          x='count(Taste):Q',tooltip='count(Taste):Q').transform_filter(brush).properties(height=150, width=600)
     return (points & bars).to_html()
 
 
