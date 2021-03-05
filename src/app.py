@@ -15,13 +15,11 @@ import numpy as np
 #------------------
 # imort data
 
-wine = pd.read_csv("scr/data/wine_dash.csv")
+wine = pd.read_csv("src/data/wine_dash.csv")
 wine['Taste'] = np.where(wine['quality']<6, 'Below average', (np.where(wine['quality']>6.5, 'Above average', 'Average')))
 
 wine.head()
 #---------------------
-
-
 
 app = dash.Dash(
     __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}],
@@ -37,14 +35,14 @@ app.layout = html.Div(
 # Update page
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
-    if pathname == '/WineVison/scr/intergraph':
+    if pathname == '/WineVison/src/intergraph':
         return intergraph.create_layout(app)
     
-    elif pathname == "/WineVison/scr/modelling":
+    elif pathname == "/WineVison/src/modelling":
         return modelling.create_layout(app)
     
 
-    elif pathname == "/WineVision/scr/full-view":
+    elif pathname == "/WineVision/src/full-view":
         return (
             overview.create_layout(app),
             intergraph.create_layout(app),
@@ -77,9 +75,6 @@ def plot_altair(xcol):
 )
     return chart.to_html()
 
-
-
-
 # second plot
 
 @app.callback(
@@ -92,8 +87,6 @@ def plot_altair_2(xcol):
     y=alt.Y('count()'),
     color='Taste').interactive()
     return chart.to_html()
-
-
 
 # thrid plot
 
@@ -118,8 +111,6 @@ def plot_altair_3(xcol,ycol):
 
 # fourth plot 
 
-
-
 @app.callback(
      Output('fourth_plot','srcDoc'),
      Input('xcol-widget_4', 'value'),
@@ -137,11 +128,6 @@ def plot_altair_4(xcol,ycol):
                                                                                           color='Taste:N',
                                                                                           x='count(Taste):Q',tooltip='count(Taste):Q').transform_filter(brush).properties(height=150, width=600)
     return (points & bars).to_html()
-
-
-
-
-
 
 
 if __name__ == "__main__":
