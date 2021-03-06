@@ -8,10 +8,8 @@ def Header(app):
 
 def get_header(app):
     header = html.Div(
-        [
-            html.Div(
-                [
-                    html.Img(
+        [html.Div(
+                [html.Img(
                         src=app.get_asset_url("logo.png"),
                         className="logo",
                     )
@@ -19,14 +17,12 @@ def get_header(app):
                 className="row",
             ),
             html.Div(
-                [
-                    html.Div(
+                [html.Div(
                         [html.H5("WineVision Dashboard")],
                         className="seven columns main-title",
                     ),
                     html.Div(
-                        [
-                            dcc.Link(
+                        [dcc.Link(
                                 "Full View",
                                 href="/WineVison/src/full-view",
                                 className="full-view-link",
@@ -46,8 +42,7 @@ def get_header(app):
 
 def get_menu():
     menu = html.Div(
-        [
-            dcc.Link(
+        [dcc.Link(
                 "Overview",
                 href="/WineVison/src/overview",
                 className="tab first",
@@ -66,7 +61,6 @@ def get_menu():
         className="row all-tabs",
     )
     return menu
-
 
 def make_dash_table(df):
     """ Return a dash definition of an HTML table for a Pandas dataframe """

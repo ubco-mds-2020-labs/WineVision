@@ -18,7 +18,6 @@ import numpy as np
 wine = pd.read_csv("src/data/wine_dash.csv")
 wine['Taste'] = np.where(wine['quality']<6, 'Below average', (np.where(wine['quality']>6.5, 'Above average', 'Average')))
 
-wine.head()
 #---------------------
 
 app = dash.Dash(
@@ -41,7 +40,6 @@ def display_page(pathname):
     elif pathname == "/WineVison/src/modelling":
         return modelling.create_layout(app)
     
-
     elif pathname == "/WineVision/src/full-view":
         return (
             overview.create_layout(app),
@@ -76,7 +74,6 @@ def plot_altair(xcol):
     return chart.to_html()
 
 # second plot
-
 @app.callback(
      Output('histgram','srcDoc'),
      Input('xcol-widget_2', 'value')
@@ -89,7 +86,6 @@ def plot_altair_2(xcol):
     return chart.to_html()
 
 # thrid plot
-
 @app.callback(
      Output('third_plot','srcDoc'),
      Input('xcol-widget_3', 'value'),
@@ -109,8 +105,7 @@ def plot_altair_3(xcol,ycol):
     
     return chart.to_html()
 
-# fourth plot 
-
+# fourth plot
 @app.callback(
      Output('fourth_plot','srcDoc'),
      Input('xcol-widget_4', 'value'),

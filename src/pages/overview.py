@@ -9,16 +9,12 @@ import numpy as np
 def create_layout(app):
     # Page layouts
     return html.Div(    
-        [
-            html.Div([Header(app)]),
+        [html.Div([Header(app)]),
             # page 1
             html.Div(
-                [
-                    
-                    # Row 3
+                [# Row 3
                     html.Div(
-                        [
-                            html.H3('Motivation'),
+                        [html.H3('Motivation'),
                             html.Br([]),
                             html.P(
                                 "\
@@ -47,7 +43,6 @@ def create_layout(app):
                         ],
                         className="product"
                     )
-                    
                     
                 ],
             ),    

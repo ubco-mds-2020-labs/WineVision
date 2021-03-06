@@ -7,23 +7,18 @@ import pathlib
 import pandas as pd
 import numpy as np
 
-
-
 #------------------
 # imort data
 
-wine = pd.read_csv("src/data/wine_dash.csv")
+wine = pd.read_csv("data/wine_dash.csv")
 wine['Taste'] = np.where(wine['quality']<6, 'Below average', (np.where(wine['quality']>6.5, 'Above average', 'Average')))
 
 #---------------------
 
-
-     
 def create_layout(app):
 
     return dbc.Container(
-        [
-             Header(app),
+        [Header(app),
              # first plot (Luka)
              dbc.Row([
                 dbc.Col([
@@ -50,9 +45,9 @@ def create_layout(app):
                  
              ]),
             dbc.Row([
-                    # third plot (Eric)
+                    # third plot (Rain)
                     dbc.Col([
-                        html.H2('Eric'),
+                        html.H2('Rain'),
                         html.Iframe(
                             id='third_plot',
                             style={'border-width': '0', 'width': '100%', 'height': '400px'}),
@@ -65,9 +60,9 @@ def create_layout(app):
                             value='pH',  # REQUIRED to show the plot on the first page load
                             options=[{'label': col, 'value': col} for col in wine.columns])
                     ]),
-                    # fourth plot (Rain)
+                    # fourth plot (Eric)
                     dbc.Col([
-                        html.H2('Rain'),
+                        html.H2('Eric'),
                         html.Iframe(
                             id='fourth_plot',
                             style={'border-width': '0', 'width': '100%', 'height': '400px'}),
@@ -83,15 +78,3 @@ def create_layout(app):
               ])
     ]
 )
-
-     
-
-
-
- 
-
-
-
-    
-if __name__ == '__main__':
-    app.run_server(debug=True)
