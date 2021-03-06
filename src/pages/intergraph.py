@@ -45,9 +45,9 @@ def create_layout(app):
                  
              ]),
             dbc.Row([
-                    # third plot (Rain)
+                    # third plot (Eric
                     dbc.Col([
-                        html.H2('Rain'),
+                        html.H2('Eric'),
                         html.Iframe(
                             id='third_plot',
                             style={'border-width': '0', 'width': '100%', 'height': '400px'}),
@@ -60,9 +60,9 @@ def create_layout(app):
                             value='pH',  # REQUIRED to show the plot on the first page load
                             options=[{'label': col, 'value': col} for col in wine.columns])
                     ]),
-                    # fourth plot (Eric)
+                    # fourth plot (Rain)
                     dbc.Col([
-                        html.H2('Eric'),
+                        html.H2('Rain'),
                         html.Iframe(
                             id='fourth_plot',
                             style={'border-width': '0', 'width': '100%', 'height': '400px'}),
