@@ -1,18 +1,21 @@
+import numpy as np
+import pandas as pd
+import altair as alt
+
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
-import altair as alt
-from utils import Header, make_dash_table
 import pathlib
-import pandas as pd
-import numpy as np
+
+from ..utils import Header, make_dash_table
+
+
+
 
 #------------------
 # imort data
 
-wine = pd.read_csv("data/wine_dash.csv")
-wine['Taste'] = np.where(wine['quality']<6, 'Below average', (np.where(wine['quality']>6.5, 'Above average', 'Average')))
-
+wine = pd.read_csv("src/data/wine_quality.csv")
 #---------------------
 
 def create_layout(app):

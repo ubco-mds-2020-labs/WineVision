@@ -1,10 +1,14 @@
+import numpy as np
+import pandas as pd
+import altair as alt
+
 import dash_core_components as dcc
 import dash_html_components as html
-import altair as alt
-from utils import Header, make_dash_table
+import dash_bootstrap_components as dbc
+
+from ..utils import Header, make_dash_table
 import pathlib
-import pandas as pd
-import numpy as np
+
 
 def create_layout(app):
     # Page layouts
