@@ -92,7 +92,7 @@ def create_layout(app):
                     html.Div(
                         [html.H3('Motivation'),
                             html.Br([]),
-                            html.P(
+                            html.H6(
                                 "\
                                 Wine is a multi billion dollar global industry. \
                                 With 36 billion bottles of wine produced each year 1,producers are constantly looking for ways to outperform \
@@ -121,6 +121,7 @@ def create_layout(app):
                     )
                     
                 ],
+                className="twelve columns"
             ),
             dbc.Container([
                 dbc.Row([
@@ -197,6 +198,5 @@ def create_layout(app):
                     ]),
 
         ]
-
         #className="page",
     )

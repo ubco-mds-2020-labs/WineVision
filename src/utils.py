@@ -18,7 +18,7 @@ def get_header(app):
             ),
             html.Div(
                 [html.Div(
-                        [html.H5("WineVision Dashboard")],
+                        [html.H2("WineVision Dashboard")],
                         className="seven columns main-title",
                     ),
                     html.Div(

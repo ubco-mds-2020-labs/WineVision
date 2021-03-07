@@ -1,7 +1,7 @@
 body {
-  width: 100%;
+  width: 80%;
   height: 100%;
-  margin: 0;
+  margin: auto;
   padding: 0;
   background-color: #fafafa;
   font-size: 1.1rem;
@@ -12,11 +12,11 @@ body {
   -moz-box-sizing: border-box;
 }
 .page {
-  position: relative;
-  width: 210mm;
+  position:auto;
+  width: 290mm;
   min-height: 300mm;
   padding: 0mm;
-  margin: 10mm auto;
+  margin: auto;
   border-radius: 5px;
   background: white;
   box-shadow: 0 0 10px lightgrey;
@@ -24,10 +24,10 @@ body {
 
 .pagetwo {
   position: relative;
-  width: 210mm;
+  width: 310mm;
   min-height: 240mm;
   padding: 0mm;
-  margin: 10mm auto;
+  margin: 10mm;
   border: 1px #d3d3d3 solid;
   border-radius: 5px;
   background: white;
@@ -45,7 +45,7 @@ body {
 @media print {
   html,
   body {
-    width: 210mm;
+    width: 310mm;
     height: 297mm;
   }
   .page {
@@ -166,21 +166,21 @@ li {
   font-size: medium;
   padding: 15px 15px;
   float: left;
-  margin-left: 75%;
-  width: 35%;
+  margin-left: 25%;
+  width: 55%;
   text-align: center;
   transition-duration: 1s;
 }
 .all-tabs {
   text-align: center;
-  font-size: 13px;
+  font-size: 19px;
   margin-top: 10px;
 }
 .main-title {
   position: relative;
   color: #3a3a3a;
   font-size: 40px !important;
-  width: 80%;
+  width: 100%;
   border-left: 20px solid #98151b;
   background: #ffffff;
   padding-left: 30px;
@@ -201,7 +201,7 @@ li {
 }
 
 .logo {
-  height: 30px;
+  height: 50px;
   width: auto;
   margin: 25px 25px;
 }
@@ -234,7 +234,7 @@ a:active {
 }
 
 .tab {
-  border-style: solid;
+  border-style:  dotted;;
   border-color: rgb(0, 0, 0, 0.2);
   border-bottom-style: none;
   border-top-style: none;
@@ -245,12 +245,12 @@ a:active {
 .rowrow {
   margin: auto;
   text-align: center;
-  width: 97%;
+  width: 100%;
 }
 
 .rowrow2 {
   margin: auto;
-  width: 97%;
+  width: 80%;
 }
 
 .tablast {
@@ -289,7 +289,7 @@ a:active {
     width: auto;
   }
   .risk-reward {
-    height: 120px;
+    height: 10px;
     width: auto;
   }
   .logo {
@@ -311,7 +311,7 @@ a:active {
     border-left: 15px solid #98151b;
   }
   .five.columns {
-    width: 45%;
+    width: 55%;
   }
   .fees {
     width: auto;
@@ -320,7 +320,7 @@ a:active {
     font-size: small;
     padding: 10px 10px;
     width: 40%;
-    margin-left: 60%;
+    margin-left: 4xf0%;
   }
   .row > .columns:not(:first-child) {
     padding: 0 0;
@@ -342,14 +342,14 @@ a:active {
 }
 @media only screen and (max-width: 400px) {
   .full-view-link {
-    width: 45%;
+    width: 100%;
     margin-left: 55%;
   }
 }
 
 @media only screen and (max-width: 350px) {
   .full-view-link {
-    width: 50%;
+    width: 100%;
     margin-left: 50%;
   }
 }
