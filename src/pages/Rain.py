@@ -10,12 +10,14 @@ import dash_bootstrap_components as dbc
 
 alt.data_transformers.enable('data_server')
 
-white_wine = pd.read_csv('winequality-white.csv', sep=';')
-red_wine = pd.read_csv('winequality-red.csv', sep=';')
+wine = pd.read_csv('wine_quality.csv')
 
-white_wine["type"] = "white"
-red_wine["type"] = "red"
-wine = red_wine.append(white_wine)
+# white_wine = pd.read_csv('winequality-white.csv', sep=';')
+# red_wine = pd.read_csv('winequality-red.csv', sep=';')
+
+# white_wine["type"] = "white"
+# red_wine["type"] = "red"
+# wine = red_wine.append(white_wine)
 
 # wine_df.loc[0] = ['g/dm3','g/dm3','g/dm3','g/dm3','g/dm3','mg/dm3','mg/dm3','g/cm3', np.nan,'g/dm3','%vol', np.nan, np.nan]
 # wine_df.to_csv('wine_new.csv', index=False)
@@ -23,7 +25,7 @@ wine = red_wine.append(white_wine)
 # wine = pd.read_csv('wine_new.csv', header=[0,1])
 # wine.columns = wine.columns.map(' in '.join)
 # wine = wine.rename(columns = {'pH in Unnamed: 8_level_1':'pH', 'quality in Unnamed: 11_level_1':'quality', 'type in Unnamed: 12_level_1': 'type'})
-wine['quality_factor'] = np.where(wine['quality']<6, 'Below Average', (np.where(wine['quality']>6.5, 'Above Average', 'Average')))
+# wine['quality_factor'] = np.where(wine['quality']<6, 'Below Average', (np.where(wine['quality']>6.5, 'Above Average', 'Average')))
 
 
 # Setup app and layout/frontend
@@ -35,14 +37,15 @@ app.layout = dbc.Container([
     dbc.Row([
         dbc.Col([
             dbc.Card(
-                dbc.CardBody(html.H5('Wine Type')),
+                dbc.CardBody(html.H3('Wine Type', className = 'wine-type'),
+                html.P('You can select either type or both', className = 'wine-type')),
                 color='info'),
 
             dcc.Checklist(
                 id = "winetype",
                 options = [
-                    {"label": "White", "value": "white"},
-                    {"label": "Red", "value": "red"}
+                    {"label": "White Wine", "value": "white"},
+                    {"label": "Red Wine", "value": "red"}
                 ],
                 value = ["red", "white"],
                 labelStyle={"display": "block"}
@@ -94,10 +97,10 @@ app.layout = dbc.Container([
 
 def plot_scatter(xcol,ycol, winetype):
 
-    wine_dif = wine.loc[(wine['type'].isin(winetype))]
+    wine_dif = wine.loc[(wine['Wine'].isin(winetype))]
 
     brush = alt.selection_interval()
-    click = alt.selection_multi(fields=['type'], bind='legend')
+    click = alt.selection_multi(fields=['Wine'], bind='legend')
 
     base = alt.Chart(wine_dif).properties(
     width=400,
@@ -107,7 +110,7 @@ def plot_scatter(xcol,ycol, winetype):
     points = base.mark_point().encode(
     x = alt.X(xcol, scale=alt.Scale(zero=False)),
     y = alt.Y(ycol, scale=alt.Scale(zero=False)),
-    color=alt.condition(brush, 'quality_factor:N', alt.value('lightgray')),
+    color=alt.condition(brush, 'Quality_Factor:N', alt.value('lightgray')),
     opacity=alt.condition(click, alt.value(0.9), alt.value(0.2))
     )
     
@@ -117,19 +120,19 @@ def plot_scatter(xcol,ycol, winetype):
     pct='1 / datum.total'
     ).mark_bar().encode(
     alt.X('sum(pct):Q', axis=alt.Axis(format='%')),
-    alt.Y('quality_factor:N'),
-    color = 'quality_factor:N',
-    tooltip = 'count(quality_factor):Q'
+    alt.Y('Quality_Factor:N'),
+    color = 'Quality_Factor:N',
+    tooltip = 'count(Quality_Factor):Q'
     ).transform_filter(brush)
 
     hists = base.mark_bar(opacity=0.5, thickness=100).encode(
-    x=alt.X('quality',
+    x=alt.X('Quality',
             bin=alt.Bin(step=1), # step keeps bin size the same
             scale=alt.Scale(zero=False)),
     y=alt.Y('count()',
             stack=None),
-    color=alt.Color('quality_factor:N'),
-    tooltip = 'count(quality):Q'
+    color=alt.Color('Quality_Factor:N'),
+    tooltip = 'count(Quality):Q'
     ).transform_filter(brush)
     
     chart = (points & bars | hists).add_selection(click)
