@@ -10,7 +10,6 @@ import dash_bootstrap_components as dbc
 
 from dash.dependencies import Input, Output
 from pages import (intergraph, overview, modelling)
-import utils
 
 #------------------
 # imort data
@@ -21,8 +20,10 @@ alt.data_transformers.enable('csv')
 #---------------------
 
 app = dash.Dash(
-    __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}],
-    external_stylesheets=["https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap-grid.min.css"]
+    __name__, meta_tags=[
+        {"name": "viewport", "content": "width=device-width"}],
+    external_stylesheets=[
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap-grid.min.css"]
 )
 server = app.server
 
