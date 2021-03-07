@@ -6,17 +6,28 @@ from utils import Header, make_dash_table
 import pathlib
 import pandas as pd
 import numpy as np
-# Allow large data set
+## Allow large data set
 alt.data_transformers.enable('data_server')
 
 # Data Wrangling
-whitewine = pd.read_csv('Data/raw/winequality-white.csv', sep=';')
-redwine = pd.read_csv('Data/raw/winequality-red.csv', sep=';')
+whitewine = pd.read_csv('Data/winequality-white.csv', sep=';')
+redwine = pd.read_csv('Data/winequality-red.csv', sep=';')
 
 whitewine["type"] = "white"
 redwine["type"] = "red"
 
 wine = redwine.append(whitewine)
+
+# Add column for factored quality
+conditions = [
+    wine["quality"] < 6,
+    wine["quality"] == 6,
+    wine["quality"] > 6
+]
+
+values = [0, 1, 2]
+
+wine["quality_factor"] = np.select(conditions, values)
 
 # Correlation Data
 
@@ -29,6 +40,21 @@ corr_df_red["type"] = "red"
 
 # Bind them together
 corr_df = corr_df_white.append(corr_df_red)
+corr_df["quality_factor"] = 3 # For all qualities
+
+# Subset by quality and for each and bind
+for i in [0,1,2]:
+    #Create white df at ith quality
+    corr_df_white = wine.loc[(wine['type'] == 'white') & (wine["quality_factor"] == i)].select_dtypes('number').corr('spearman').stack().reset_index(name='corr')
+    corr_df_white["type"] = "white"
+    corr_df_white["quality_factor"] = i
+    #create red df at ith quality
+    corr_df_red = wine.loc[(wine['type'] == 'red') & (wine["quality_factor"] == i)].select_dtypes('number').corr('spearman').stack().reset_index(name='corr')
+    corr_df_red["type"] = "red"
+    corr_df_red["quality_factor"] = i
+    # bind to main df
+    corr_df = corr_df.append(corr_df_red)
+    corr_df = corr_df.append(corr_df_white)
 
 #Remove full correlations on diag
 corr_df.loc[corr_df['corr'] == 1, 'corr'] = 0
@@ -37,6 +63,8 @@ corr_df['abs'] = corr_df['corr'].abs()
 
 # Get a list of unique column names
 variables = corr_df["level_0"].unique()
+variables = np.delete(variables, np.argwhere(variables == "quality_factor")) #Don't want this as an option in scatterplot
+
 # Matrix plot. I couldn't figure out how to make it work at the bottom without a callback input
 def plot_matrix():
     click = alt.selection_multi(fields=['type'], bind='legend') 
