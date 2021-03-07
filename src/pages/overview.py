@@ -1,6 +1,11 @@
+import numpy as np
+import pandas as pd
+import altair as alt
+
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
+<<<<<<< HEAD
 import altair as alt
 from utils import Header, make_dash_table
 import pathlib
@@ -8,6 +13,12 @@ import pandas as pd
 import numpy as np
 ## Allow large data set
 alt.data_transformers.enable('data_server')
+=======
+
+from ..utils import Header, make_dash_table
+import pathlib
+
+>>>>>>> main
 
 # Data Wrangling
 whitewine = pd.read_csv('Data/winequality-white.csv', sep=';')

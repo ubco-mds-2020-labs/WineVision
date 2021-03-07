@@ -11,6 +11,7 @@ from pages import (
 
 import pandas as pd
 import numpy as np
+<<<<<<< HEAD
 
 #------------------
 # imort data
@@ -20,12 +21,22 @@ wine['Taste'] = np.where(wine['quality']<6, 'Below average', (np.where(wine['qua
 
 #---------------------
 alt.data_transformers.enable("data_server")
+=======
+#------------------
+# import data
+
+wine = pd.read_csv("src/data/wine_quality.csv")
+
+#---------------------
+
+>>>>>>> main
 app = dash.Dash(
     __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}],
     external_stylesheets=["https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap-grid.min.css"]
 )
 server = app.server
 
+<<<<<<< HEAD
 #-------------------------eric data cleaning
 ## Allow large data set
 alt.data_transformers.enable('data_server')
@@ -99,6 +110,8 @@ variables = np.delete(variables, np.argwhere(variables == "quality_factor")) #Do
 
 #-----------------------------
 
+=======
+>>>>>>> main
 # Describe the layout/ UI of the app
 app.layout = html.Div(
     [dcc.Location(id="url", refresh=False), html.Div(id="page-content")]
@@ -132,7 +145,11 @@ def display_page(pathname):
 def plot_altair(xcol):
     chart= alt.Chart(wine).transform_density(
      'pH',
+<<<<<<< HEAD
      groupby=['quality', 'Taste'],
+=======
+     groupby=['quality', 'final_quality'],
+>>>>>>> main
      as_=['pH', 'density']).mark_area(opacity=0.4).encode(
      x='pH',
      y='density:Q',
@@ -146,7 +163,10 @@ def plot_altair(xcol):
 )
     return chart.to_html()
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
 # second plot
 @app.callback(
      Output('histgram','srcDoc'),
@@ -156,7 +176,11 @@ def plot_altair_2(xcol):
     chart= alt.Chart(wine).mark_bar().encode(
     x=alt.X(xcol, type='quantitative', bin=alt.Bin(maxbins=30)),
     y=alt.Y('count()'),
+<<<<<<< HEAD
     color='Taste').interactive()
+=======
+    color='final_quality').interactive()
+>>>>>>> main
     return chart.to_html()
 
 # thrid plot
@@ -185,11 +209,17 @@ def plot_altair_3(xcol,ycol):
      Input('xcol-widget_4', 'value'),
      Input('ycol-widget_4', 'value')
      )
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> main
 def plot_altair_4(xcol,ycol):
     brush = alt.selection_interval()
     points = alt.Chart(wine,title="Interactive Plot of "+ ycol+" vs "+ xcol +" for 3 Quality Levels" ).mark_point().encode(
     alt.X(xcol, scale=alt.Scale(zero=False)),
     alt.Y(ycol, scale=alt.Scale(zero=False)),
+<<<<<<< HEAD
     color=alt.condition(brush, 'Taste:N', alt.value('lightgray'))
 ).add_selection(brush).properties(height=300, width=600)
     
@@ -286,3 +316,16 @@ def plot_histogram(qual, winetype, histvalue):
     
 if __name__ == '__main__':
     app.run_server(debug=False,dev_tools_ui=False,dev_tools_props_check=False)
+=======
+    color=alt.condition(brush, 'final_quality:N', alt.value('lightgray'))
+).add_selection(brush).properties(height=300, width=600)
+    
+    bars = alt.Chart(wine,title="Count of Each Quality Level of Wines").mark_bar().encode(y='final_quality:N',
+                                                                                          color='final_quality:N',
+                                                                                          x='count(final_quality):Q',tooltip='count(final_quality):Q').transform_filter(brush).properties(height=150, width=600)
+    return (points & bars).to_html()
+
+
+if __name__ == "__main__":
+    app.run_server(debug=True)
+>>>>>>> main

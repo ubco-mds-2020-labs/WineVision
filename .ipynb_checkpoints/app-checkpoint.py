@@ -11,12 +11,10 @@ from pages import (
 
 import pandas as pd
 import numpy as np
-
 #------------------
-# imort data
+# import data
 
-wine = pd.read_csv("src/data/wine_dash.csv")
-wine['Taste'] = np.where(wine['quality']<6, 'Below average', (np.where(wine['quality']>6.5, 'Above average', 'Average')))
+wine = pd.read_csv("src/data/wine_quality.csv")
 
 #---------------------
 
@@ -59,7 +57,7 @@ def display_page(pathname):
 def plot_altair(xcol):
     chart= alt.Chart(wine).transform_density(
      'pH',
-     groupby=['quality', 'Taste'],
+     groupby=['quality', 'final_quality'],
      as_=['pH', 'density']).mark_area(opacity=0.4).encode(
      x='pH',
      y='density:Q',
@@ -82,7 +80,7 @@ def plot_altair_2(xcol):
     chart= alt.Chart(wine).mark_bar().encode(
     x=alt.X(xcol, type='quantitative', bin=alt.Bin(maxbins=30)),
     y=alt.Y('count()'),
-    color='Taste').interactive()
+    color='final_quality').interactive()
     return chart.to_html()
 
 # thrid plot
@@ -111,17 +109,19 @@ def plot_altair_3(xcol,ycol):
      Input('xcol-widget_4', 'value'),
      Input('ycol-widget_4', 'value')
      )
+
+
 def plot_altair_4(xcol,ycol):
     brush = alt.selection_interval()
     points = alt.Chart(wine,title="Interactive Plot of "+ ycol+" vs "+ xcol +" for 3 Quality Levels" ).mark_point().encode(
     alt.X(xcol, scale=alt.Scale(zero=False)),
     alt.Y(ycol, scale=alt.Scale(zero=False)),
-    color=alt.condition(brush, 'Taste:N', alt.value('lightgray'))
+    color=alt.condition(brush, 'final_quality:N', alt.value('lightgray'))
 ).add_selection(brush).properties(height=300, width=600)
     
-    bars = alt.Chart(wine,title="Count of Each Quality Level of Wines").mark_bar().encode(y='Taste:N',
-                                                                                          color='Taste:N',
-                                                                                          x='count(Taste):Q',tooltip='count(Taste):Q').transform_filter(brush).properties(height=150, width=600)
+    bars = alt.Chart(wine,title="Count of Each Quality Level of Wines").mark_bar().encode(y='final_quality:N',
+                                                                                          color='final_quality:N',
+                                                                                          x='count(final_quality):Q',tooltip='count(final_quality):Q').transform_filter(brush).properties(height=150, width=600)
     return (points & bars).to_html()
 
 
