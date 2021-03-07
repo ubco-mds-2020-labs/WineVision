@@ -1,0 +1,289 @@
+level_0,level_1,corr,Wine,Quality Factor
+Fixed Acidity,Fixed Acidity,1.0,white,3
+Fixed Acidity,Volatile Acidity,-0.0428652279430201,white,3
+Fixed Acidity,Citric Acid,0.29787793049527433,white,3
+Fixed Acidity,Residual Sugar,0.1067249381926073,white,3
+Fixed Acidity,Chlorides,0.0946911756971691,white,3
+Fixed Acidity,Free Sulfur Dioxide,-0.0245422295942914,white,3
+Fixed Acidity,Total Sulfur Dioxide,0.11264866165536401,white,3
+Fixed Acidity,Density,0.2700309142195856,white,3
+Fixed Acidity,pH,-0.41834115782929115,white,3
+Fixed Acidity,Sulphates,-0.013237813183569523,white,3
+Fixed Acidity,Alcohol,-0.10682740160241681,white,3
+Fixed Acidity,Quality,-0.08448544853281695,white,3
+Volatile Acidity,Fixed Acidity,-0.0428652279430201,white,3
+Volatile Acidity,Volatile Acidity,1.0,white,3
+Volatile Acidity,Citric Acid,-0.1504099808235828,white,3
+Volatile Acidity,Residual Sugar,0.10862744057886908,white,3
+Volatile Acidity,Chlorides,-0.004934156367378388,white,3
+Volatile Acidity,Free Sulfur Dioxide,-0.08121290303701761,white,3
+Volatile Acidity,Total Sulfur Dioxide,0.1176139590808801,white,3
+Volatile Acidity,Density,0.01012434055830917,white,3
+Volatile Acidity,pH,-0.04520356910654741,white,3
+Volatile Acidity,Sulphates,-0.016902302827682455,white,3
+Volatile Acidity,Alcohol,0.03396655422752681,white,3
+Volatile Acidity,Quality,-0.19656168295264323,white,3
+Citric Acid,Fixed Acidity,0.29787793049527433,white,3
+Citric Acid,Volatile Acidity,-0.1504099808235828,white,3
+Citric Acid,Citric Acid,1.0,white,3
+Citric Acid,Residual Sugar,0.02462098187946376,white,3
+Citric Acid,Chlorides,0.032659495041208624,white,3
+Citric Acid,Free Sulfur Dioxide,0.08831405580938147,white,3
+Citric Acid,Total Sulfur Dioxide,0.09321867311750295,white,3
+Citric Acid,Density,0.0914251902251864,white,3
+Citric Acid,pH,-0.14619267453776993,white,3
+Citric Acid,Sulphates,0.07976628344876162,white,3
+Citric Acid,Alcohol,-0.029169957554810305,white,3
+Citric Acid,Quality,0.018332725649382695,white,3
+Residual Sugar,Fixed Acidity,0.1067249381926073,white,3
+Residual Sugar,Volatile Acidity,0.10862744057886908,white,3
+Residual Sugar,Citric Acid,0.02462098187946376,white,3
+Residual Sugar,Residual Sugar,1.0,white,3
+Residual Sugar,Chlorides,0.2278439038309064,white,3
+Residual Sugar,Free Sulfur Dioxide,0.34610673695883126,white,3
+Residual Sugar,Total Sulfur Dioxide,0.4312524842159543,white,3
+Residual Sugar,Density,0.7803648454400167,white,3
+Residual Sugar,pH,-0.1800282233647181,white,3
+Residual Sugar,Sulphates,-0.003843979878922126,white,3
+Residual Sugar,Alcohol,-0.4452574331067235,white,3
+Residual Sugar,Quality,-0.08206978991126886,white,3
+Chlorides,Fixed Acidity,0.0946911756971691,white,3
+Chlorides,Volatile Acidity,-0.004934156367378388,white,3
+Chlorides,Citric Acid,0.032659495041208624,white,3
+Chlorides,Residual Sugar,0.2278439038309064,white,3
+Chlorides,Chlorides,1.0,white,3
+Chlorides,Free Sulfur Dioxide,0.16704550491668677,white,3
+Chlorides,Total Sulfur Dioxide,0.3752436657716385,white,3
+Chlorides,Density,0.5083017652202878,white,3
+Chlorides,pH,-0.05400646660044567,white,3
+Chlorides,Sulphates,0.09393069587410117,white,3
+Chlorides,Alcohol,-0.5708064071153713,white,3
+Chlorides,Quality,-0.31448847828244203,white,3
+Free Sulfur Dioxide,Fixed Acidity,-0.0245422295942914,white,3
+Free Sulfur Dioxide,Volatile Acidity,-0.08121290303701761,white,3
+Free Sulfur Dioxide,Citric Acid,0.08831405580938147,white,3
+Free Sulfur Dioxide,Residual Sugar,0.34610673695883126,white,3
+Free Sulfur Dioxide,Chlorides,0.16704550491668677,white,3
+Free Sulfur Dioxide,Free Sulfur Dioxide,1.0,white,3
+Free Sulfur Dioxide,Total Sulfur Dioxide,0.6186163388331407,white,3
+Free Sulfur Dioxide,Density,0.32782179810722817,white,3
+Free Sulfur Dioxide,pH,-0.006273577856455676,white,3
+Free Sulfur Dioxide,Sulphates,0.052251683489656184,white,3
+Free Sulfur Dioxide,Alcohol,-0.27256933756159435,white,3
+Free Sulfur Dioxide,Quality,0.023713375736277593,white,3
+Total Sulfur Dioxide,Fixed Acidity,0.11264866165536401,white,3
+Total Sulfur Dioxide,Volatile Acidity,0.1176139590808801,white,3
+Total Sulfur Dioxide,Citric Acid,0.09321867311750295,white,3
+Total Sulfur Dioxide,Residual Sugar,0.4312524842159543,white,3
+Total Sulfur Dioxide,Chlorides,0.3752436657716385,white,3
+Total Sulfur Dioxide,Free Sulfur Dioxide,0.6186163388331407,white,3
+Total Sulfur Dioxide,Total Sulfur Dioxide,1.0,white,3
+Total Sulfur Dioxide,Density,0.5638240915817069,white,3
+Total Sulfur Dioxide,pH,-0.011828717565377905,white,3
+Total Sulfur Dioxide,Sulphates,0.15782479528317253,white,3
+Total Sulfur Dioxide,Alcohol,-0.4766193333668304,white,3
+Total Sulfur Dioxide,Quality,-0.19668028952372787,white,3
+Density,Fixed Acidity,0.2700309142195856,white,3
+Density,Volatile Acidity,0.01012434055830917,white,3
+Density,Citric Acid,0.0914251902251864,white,3
+Density,Residual Sugar,0.7803648454400167,white,3
+Density,Chlorides,0.5083017652202878,white,3
+Density,Free Sulfur Dioxide,0.32782179810722817,white,3
+Density,Total Sulfur Dioxide,0.5638240915817069,white,3
+Density,Density,1.0,white,3
+Density,pH,-0.11006085193246218,white,3
+Density,Sulphates,0.09507866873153581,white,3
+Density,Alcohol,-0.8218550815265311,white,3
+Density,Quality,-0.34835102264412215,white,3
+pH,Fixed Acidity,-0.41834115782929115,white,3
+pH,Volatile Acidity,-0.04520356910654741,white,3
+pH,Citric Acid,-0.14619267453776993,white,3
+pH,Residual Sugar,-0.1800282233647181,white,3
+pH,Chlorides,-0.05400646660044567,white,3
+pH,Free Sulfur Dioxide,-0.006273577856455676,white,3
+pH,Total Sulfur Dioxide,-0.011828717565377905,white,3
+pH,Density,-0.11006085193246218,white,3
+pH,pH,1.0,white,3
+pH,Sulphates,0.14024330529830112,white,3
+pH,Alcohol,0.14885724896146918,white,3
+pH,Quality,0.10936207744663339,white,3
+Sulphates,Fixed Acidity,-0.013237813183569523,white,3
+Sulphates,Volatile Acidity,-0.016902302827682455,white,3
+Sulphates,Citric Acid,0.07976628344876162,white,3
+Sulphates,Residual Sugar,-0.003843979878922126,white,3
+Sulphates,Chlorides,0.09393069587410117,white,3
+Sulphates,Free Sulfur Dioxide,0.052251683489656184,white,3
+Sulphates,Total Sulfur Dioxide,0.15782479528317253,white,3
+Sulphates,Density,0.09507866873153581,white,3
+Sulphates,pH,0.14024330529830112,white,3
+Sulphates,Sulphates,1.0,white,3
+Sulphates,Alcohol,-0.04486799171715492,white,3
+Sulphates,Quality,0.033318969418074176,white,3
+Alcohol,Fixed Acidity,-0.10682740160241681,white,3
+Alcohol,Volatile Acidity,0.03396655422752681,white,3
+Alcohol,Citric Acid,-0.029169957554810305,white,3
+Alcohol,Residual Sugar,-0.4452574331067235,white,3
+Alcohol,Chlorides,-0.5708064071153713,white,3
+Alcohol,Free Sulfur Dioxide,-0.27256933756159435,white,3
+Alcohol,Total Sulfur Dioxide,-0.4766193333668304,white,3
+Alcohol,Density,-0.8218550815265311,white,3
+Alcohol,pH,0.14885724896146918,white,3
+Alcohol,Sulphates,-0.04486799171715492,white,3
+Alcohol,Alcohol,1.0,white,3
+Alcohol,Quality,0.4403691816246831,white,3
+Quality,Fixed Acidity,-0.08448544853281695,white,3
+Quality,Volatile Acidity,-0.19656168295264323,white,3
+Quality,Citric Acid,0.018332725649382695,white,3
+Quality,Residual Sugar,-0.08206978991126886,white,3
+Quality,Chlorides,-0.31448847828244203,white,3
+Quality,Free Sulfur Dioxide,0.023713375736277593,white,3
+Quality,Total Sulfur Dioxide,-0.19668028952372787,white,3
+Quality,Density,-0.34835102264412215,white,3
+Quality,pH,0.10936207744663339,white,3
+Quality,Sulphates,0.033318969418074176,white,3
+Quality,Alcohol,0.4403691816246831,white,3
+Quality,Quality,1.0,white,3
+Fixed Acidity,Fixed Acidity,1.0,red,3
+Fixed Acidity,Volatile Acidity,-0.2782822153049616,red,3
+Fixed Acidity,Citric Acid,0.6617084166678848,red,3
+Fixed Acidity,Residual Sugar,0.2207008643748006,red,3
+Fixed Acidity,Chlorides,0.25090410642510275,red,3
+Fixed Acidity,Free Sulfur Dioxide,-0.17513656130049587,red,3
+Fixed Acidity,Total Sulfur Dioxide,-0.08841740827654446,red,3
+Fixed Acidity,Density,0.6230707573728461,red,3
+Fixed Acidity,pH,-0.7066735947251237,red,3
+Fixed Acidity,Sulphates,0.2126537505850039,red,3
+Fixed Acidity,Alcohol,-0.06657565834054313,red,3
+Fixed Acidity,Quality,0.11408367358880325,red,3
+Volatile Acidity,Fixed Acidity,-0.2782822153049616,red,3
+Volatile Acidity,Volatile Acidity,1.0,red,3
+Volatile Acidity,Citric Acid,-0.6102594672899105,red,3
+Volatile Acidity,Residual Sugar,0.03238560260008179,red,3
+Volatile Acidity,Chlorides,0.15877025478849963,red,3
+Volatile Acidity,Free Sulfur Dioxide,0.021162641389858777,red,3
+Volatile Acidity,Total Sulfur Dioxide,0.09411013757895594,red,3
+Volatile Acidity,Density,0.025014115531625674,red,3
+Volatile Acidity,pH,0.2335715187440911,red,3
+Volatile Acidity,Sulphates,-0.32558398183690535,red,3
+Volatile Acidity,Alcohol,-0.22493167559221625,red,3
+Volatile Acidity,Quality,-0.3806465104253755,red,3
+Citric Acid,Fixed Acidity,0.6617084166678848,red,3
+Citric Acid,Volatile Acidity,-0.6102594672899105,red,3
+Citric Acid,Citric Acid,1.0,red,3
+Citric Acid,Residual Sugar,0.1764173055062221,red,3
+Citric Acid,Chlorides,0.11257650769888615,red,3
+Citric Acid,Free Sulfur Dioxide,-0.0764515753393316,red,3
+Citric Acid,Total Sulfur Dioxide,0.009399602361305333,red,3
+Citric Acid,Density,0.3522852613491623,red,3
+Citric Acid,pH,-0.548026276268095,red,3
+Citric Acid,Sulphates,0.3310744040048275,red,3
+Citric Acid,Alcohol,0.0964555444607986,red,3
+Citric Acid,Quality,0.2134809144221363,red,3
+Residual Sugar,Fixed Acidity,0.2207008643748006,red,3
+Residual Sugar,Volatile Acidity,0.03238560260008179,red,3
+Residual Sugar,Citric Acid,0.1764173055062221,red,3
+Residual Sugar,Residual Sugar,1.0,red,3
+Residual Sugar,Chlorides,0.21295924194551002,red,3
+Residual Sugar,Free Sulfur Dioxide,0.07461786396148479,red,3
+Residual Sugar,Total Sulfur Dioxide,0.14537505840853648,red,3
+Residual Sugar,Density,0.42226586308169317,red,3
+Residual Sugar,pH,-0.08997095399986102,red,3
+Residual Sugar,Sulphates,0.038332000205734636,red,3
+Residual Sugar,Alcohol,0.11654813117003866,red,3
+Residual Sugar,Quality,0.03204816752905733,red,3
+Chlorides,Fixed Acidity,0.25090410642510275,red,3
+Chlorides,Volatile Acidity,0.15877025478849963,red,3
+Chlorides,Citric Acid,0.11257650769888615,red,3
+Chlorides,Residual Sugar,0.21295924194551002,red,3
+Chlorides,Chlorides,1.0,red,3
+Chlorides,Free Sulfur Dioxide,0.0008051686407192979,red,3
+Chlorides,Total Sulfur Dioxide,0.13003334180682016,red,3
+Chlorides,Density,0.4113896971682908,red,3
+Chlorides,pH,-0.23436127355289174,red,3
+Chlorides,Sulphates,0.020825479176879696,red,3
+Chlorides,Alcohol,-0.2845039421802988,red,3
+Chlorides,Quality,-0.18992233561730723,red,3
+Free Sulfur Dioxide,Fixed Acidity,-0.17513656130049587,red,3
+Free Sulfur Dioxide,Volatile Acidity,0.021162641389858777,red,3
+Free Sulfur Dioxide,Citric Acid,-0.0764515753393316,red,3
+Free Sulfur Dioxide,Residual Sugar,0.07461786396148479,red,3
+Free Sulfur Dioxide,Chlorides,0.0008051686407192979,red,3
+Free Sulfur Dioxide,Free Sulfur Dioxide,1.0,red,3
+Free Sulfur Dioxide,Total Sulfur Dioxide,0.7896978766514561,red,3
+Free Sulfur Dioxide,Density,-0.041177679952735614,red,3
+Free Sulfur Dioxide,pH,0.11567917785621815,red,3
+Free Sulfur Dioxide,Sulphates,0.04586235004505543,red,3
+Free Sulfur Dioxide,Alcohol,-0.08136730625070861,red,3
+Free Sulfur Dioxide,Quality,-0.05690064550153929,red,3
+Total Sulfur Dioxide,Fixed Acidity,-0.08841740827654446,red,3
+Total Sulfur Dioxide,Volatile Acidity,0.09411013757895594,red,3
+Total Sulfur Dioxide,Citric Acid,0.009399602361305333,red,3
+Total Sulfur Dioxide,Residual Sugar,0.14537505840853648,red,3
+Total Sulfur Dioxide,Chlorides,0.13003334180682016,red,3
+Total Sulfur Dioxide,Free Sulfur Dioxide,0.7896978766514561,red,3
+Total Sulfur Dioxide,Total Sulfur Dioxide,1.0,red,3
+Total Sulfur Dioxide,Density,0.12933210180456456,red,3
+Total Sulfur Dioxide,pH,-0.009841438153158227,red,3
+Total Sulfur Dioxide,Sulphates,-0.0005038194198738102,red,3
+Total Sulfur Dioxide,Alcohol,-0.25780602508762224,red,3
+Total Sulfur Dioxide,Quality,-0.1967350754412208,red,3
+Density,Fixed Acidity,0.6230707573728461,red,3
+Density,Volatile Acidity,0.025014115531625674,red,3
+Density,Citric Acid,0.3522852613491623,red,3
+Density,Residual Sugar,0.42226586308169317,red,3
+Density,Chlorides,0.4113896971682908,red,3
+Density,Free Sulfur Dioxide,-0.041177679952735614,red,3
+Density,Total Sulfur Dioxide,0.12933210180456456,red,3
+Density,Density,1.0,red,3
+Density,pH,-0.3120550782083872,red,3
+Density,Sulphates,0.16147823441295167,red,3
+Density,Alcohol,-0.46244457892711605,red,3
+Density,Quality,-0.17707406597199962,red,3
+pH,Fixed Acidity,-0.7066735947251237,red,3
+pH,Volatile Acidity,0.2335715187440911,red,3
+pH,Citric Acid,-0.548026276268095,red,3
+pH,Residual Sugar,-0.08997095399986102,red,3
+pH,Chlorides,-0.23436127355289174,red,3
+pH,Free Sulfur Dioxide,0.11567917785621815,red,3
+pH,Total Sulfur Dioxide,-0.009841438153158227,red,3
+pH,Density,-0.3120550782083872,red,3
+pH,pH,1.0,red,3
+pH,Sulphates,-0.08030603798903785,red,3
+pH,Alcohol,0.17993242683879992,red,3
+pH,Quality,-0.04367193478892838,red,3
+Sulphates,Fixed Acidity,0.2126537505850039,red,3
+Sulphates,Volatile Acidity,-0.32558398183690535,red,3
+Sulphates,Citric Acid,0.3310744040048275,red,3
+Sulphates,Residual Sugar,0.038332000205734636,red,3
+Sulphates,Chlorides,0.020825479176879696,red,3
+Sulphates,Free Sulfur Dioxide,0.04586235004505543,red,3
+Sulphates,Total Sulfur Dioxide,-0.0005038194198738102,red,3
+Sulphates,Density,0.16147823441295167,red,3
+Sulphates,pH,-0.08030603798903785,red,3
+Sulphates,Sulphates,1.0,red,3
+Sulphates,Alcohol,0.20732955351683052,red,3
+Sulphates,Quality,0.3770601991021219,red,3
+Alcohol,Fixed Acidity,-0.06657565834054313,red,3
+Alcohol,Volatile Acidity,-0.22493167559221625,red,3
+Alcohol,Citric Acid,0.0964555444607986,red,3
+Alcohol,Residual Sugar,0.11654813117003866,red,3
+Alcohol,Chlorides,-0.2845039421802988,red,3
+Alcohol,Free Sulfur Dioxide,-0.08136730625070861,red,3
+Alcohol,Total Sulfur Dioxide,-0.25780602508762224,red,3
+Alcohol,Density,-0.46244457892711605,red,3
+Alcohol,pH,0.17993242683879992,red,3
+Alcohol,Sulphates,0.20732955351683052,red,3
+Alcohol,Alcohol,1.0,red,3
+Alcohol,Quality,0.4785316874702435,red,3
+Quality,Fixed Acidity,0.11408367358880325,red,3
+Quality,Volatile Acidity,-0.3806465104253755,red,3
+Quality,Citric Acid,0.2134809144221363,red,3
+Quality,Residual Sugar,0.03204816752905733,red,3
+Quality,Chlorides,-0.18992233561730723,red,3
+Quality,Free Sulfur Dioxide,-0.05690064550153929,red,3
+Quality,Total Sulfur Dioxide,-0.1967350754412208,red,3
+Quality,Density,-0.17707406597199962,red,3
+Quality,pH,-0.04367193478892838,red,3
+Quality,Sulphates,0.3770601991021219,red,3
+Quality,Alcohol,0.4785316874702435,red,3
+Quality,Quality,1.0,red,3
