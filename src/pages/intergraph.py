@@ -40,7 +40,7 @@ wine["quality_factor"] = np.select(conditions, values)
 def create_layout(app):
 
     return dbc.Container([Header(app),
-                          # first plot (Luka)
+
                           dbc.Row([
                               html.H3(
                                   'Various Features in Different Quality Factors'),
@@ -98,13 +98,24 @@ def create_layout(app):
                                           # srcDoc = plot_scatter(),
                                           style={'border-width': '0',
                                                  'width': '120%', 'height': '700px'},
-                                          
-                                      )
+
+                                      ),
+                                      dbc.Col([
+                                          html.H2('Luka'),
+                                          html.Iframe(
+                                              id='first_plot',
+                                              style={'border-width': '0', 'width': '100%', 'height': '400px'}),
+                                          dcc.Dropdown(
+                                              id='xcol-widget_dens',
+                                              value='pH',  # REQUIRED to show the plot on the first page load
+                                              options=[{'label': col, 'value': col} for col in wine.columns])
+                                      ]),
+
                                   ]),
                                   className="twelve columns"
 
-                                )
-                                
-                              ])
+                              )
 
-])
+                          ])
+
+                          ])

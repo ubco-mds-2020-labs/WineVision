@@ -32,7 +32,7 @@ def get_header(app):
                     ),
                 ],
                 className="twelve columns",
-                style={"padding-left": "1"},
+                #style={"padding-left": "1"},
             ),
         ],
         className="row",
