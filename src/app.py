@@ -1,21 +1,18 @@
 # -*- coding: utf-8 -*-
-import numpy as np
-import pandas as pd
-import altair as alt
-
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import dash_bootstrap_components as dbc
-
+import altair as alt
 from dash.dependencies import Input, Output
-from src.pages import (
+from pages import (
     intergraph,
     overview
 )
 
+import pandas as pd
+import numpy as np
 #------------------
-# imort data
+# import data
 
 wine = pd.read_csv("src/data/wine_quality.csv")
 
@@ -112,6 +109,8 @@ def plot_altair_3(xcol,ycol):
      Input('xcol-widget_4', 'value'),
      Input('ycol-widget_4', 'value')
      )
+
+
 def plot_altair_4(xcol,ycol):
     brush = alt.selection_interval()
     points = alt.Chart(wine,title="Interactive Plot of "+ ycol+" vs "+ xcol +" for 3 Quality Levels" ).mark_point().encode(
