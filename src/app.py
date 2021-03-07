@@ -122,7 +122,6 @@ def display_page(pathname):
 @app.callback(
      Output('first_plot', 'srcDoc'),
      Input('xcol-widget', 'value'))
-
 def plot_altair(xcol):
     units = {'Fixed Acidity':'(g/dm3)', 'Volatile Acidity':'(g/dm3)', 'Citric Acid':'(g/dm3)',
              'Residual Sugar':'(g/dm3)', 'Chlorides':'(g/dm3)', 'Density':'(g/dm3)', 'Sulphates':'(g/dm3)',
@@ -147,6 +146,7 @@ def plot_altair(xcol):
             ).configure_view(stroke=None).configure_headerFacet(title=None, labelAlign='right', labelAnchor='end', labelFontWeight=600, labelFontSize=12).interactive()
     
     return chart.to_html()
+
 
 # second plot
 @app.callback(
