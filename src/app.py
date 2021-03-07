@@ -15,11 +15,11 @@ import numpy as np
 #------------------
 # imort data
 
-wine = pd.read_csv("src/data/wine_dash.csv")
+wine = pd.read_csv("data/wine_quality.csv")
 wine['Taste'] = np.where(wine['quality']<6, 'Below average', (np.where(wine['quality']>6.5, 'Above average', 'Average')))
 
 #---------------------
-
+alt.data_transformers.enable("data_server")
 app = dash.Dash(
     __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}],
     external_stylesheets=["https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap-grid.min.css"]
@@ -72,6 +72,7 @@ def plot_altair(xcol):
     titleFontSize=15
 )
     return chart.to_html()
+
 
 # second plot
 @app.callback(

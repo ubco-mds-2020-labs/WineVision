@@ -10,9 +10,9 @@ import numpy as np
 #------------------
 # imort data
 
-wine = pd.read_csv("data/wine_dash.csv")
+wine = pd.read_csv("src/data/wine_quality.csv")
 wine['Taste'] = np.where(wine['quality']<6, 'Below average', (np.where(wine['quality']>6.5, 'Above average', 'Average')))
-
+alt.data_transformers.enable("data_server")
 #---------------------
 
 def create_layout(app):
