@@ -31,7 +31,7 @@ def create_layout(app):
                         style={'border-width': '0', 'width': '100%', 'height': '400px'}),
                     dcc.Dropdown(
                         id='xcol-widget',
-                        value='pH',  # REQUIRED to show the plot on the first page load
+                        value='Ph',  # REQUIRED to show the plot on the first page load
                         options=[{'label': col, 'value': col} for col in wine.columns])
                 ]),
                 #second plot ( Yuxuan )

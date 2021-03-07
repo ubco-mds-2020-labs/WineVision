@@ -12,10 +12,7 @@ from pages import (
 import pandas as pd
 import numpy as np
 
-#------------------
-# imort data
 
-wine = pd.read_csv('src/data/wine_quality.csv')
 
 #wine = pd.read_csv("src/data/wine_quality.csv")
 #wine['Taste'] = np.where(wine['quality']<6, 'Below average', (np.where(wine['quality']>6.5, 'Above average', 'Average')))
@@ -24,6 +21,8 @@ wine = pd.read_csv('src/data/wine_quality.csv')
 ## Allow large data set
 alt.data_transformers.enable('data_server')
 
+
+# Correlation Data
 # Data Wrangling
 whitewine = pd.read_csv('Data/winequality-white.csv', sep=';')
 redwine = pd.read_csv('Data/winequality-red.csv', sep=';')
@@ -43,8 +42,6 @@ conditions = [
 values = [0, 1, 2]
 
 wine["quality_factor"] = np.select(conditions, values)
-
-# Correlation Data
 
 # Get correlations for each wine type
 corr_df_white = wine.loc[wine['type'] == 'white'].select_dtypes('number').corr('spearman').stack().reset_index(name='corr')
@@ -80,9 +77,10 @@ corr_df['abs'] = corr_df['corr'].abs()
 variables = corr_df["level_0"].unique()
 variables = np.delete(variables, np.argwhere(variables == "quality_factor")) #Don't want this as an option in scatterplot
 
-# Matrix plot. I couldn't figure out how to make it work at the bottom without a callback input
 
+# imort data
 
+wine = pd.read_csv('src/data/wine_quality.csv')
 #-----------------------------
 
 
@@ -286,4 +284,4 @@ def plot_histogram(qual, winetype, histvalue):
     
     
 if __name__ == '__main__':
-    app.run_server(debug=False,dev_tools_ui=False,dev_tools_props_check=False)
+    app.run_server(debug=True,dev_tools_ui=False,dev_tools_props_check=False)
