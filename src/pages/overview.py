@@ -6,8 +6,9 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
-from ..utils import Header, make_dash_table
 import pathlib
+from utils import Header, make_dash_table
+
 
 
 def create_layout(app):
