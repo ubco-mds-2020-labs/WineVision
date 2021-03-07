@@ -33,51 +33,54 @@ def create_layout(app):
                         id='xcol-widget',
                         value='Ph',  # REQUIRED to show the plot on the first page load
                         options=[{'label': col, 'value': col} for col in wine.columns])
-                ]),
-                #second plot ( Yuxuan )
-                dbc.Col([
-                    html.H2('Yuxuan'),
-                    html.Iframe(
-                        id='histgram',
-                        style={'border-width': '0', 'width': '100%', 'height': '400px'}),
-                    dcc.Dropdown(
-                        id='xcol-widget_2',
-                        value='pH',  # REQUIRED to show the plot on the first page load
-                        options=[{'label': col, 'value': col} for col in wine.columns]),
-                 ])
-                 
-             ]),
-            dbc.Row([
-                    # third plot (Eric
-                    dbc.Col([
-                        html.H2('Eric'),
-                        html.Iframe(
-                            id='third_plot',
-                            style={'border-width': '0', 'width': '100%', 'height': '400px'}),
-                    dcc.Dropdown(
-                            id='xcol-widget_3',
-                            value='pH',  # REQUIRED to show the plot on the first page load
-                            options=[{'label': col, 'value': col} for col in wine.columns]),
-                    dcc.Dropdown(
-                            id='ycol-widget',
-                            value='pH',  # REQUIRED to show the plot on the first page load
-                            options=[{'label': col, 'value': col} for col in wine.columns])
                     ]),
-                    # fourth plot (Rain)
-                    dbc.Col([
-                        html.H2('Rain'),
-                        html.Iframe(
-                            id='fourth_plot',
-                            style={'border-width': '0', 'width': '100%', 'height': '400px'}),
-                        dcc.Dropdown(
-                            id='xcol-widget_4',
-                            value='pH',  # REQUIRED to show the plot on the first page load
-                            options=[{'label': col, 'value': col} for col in wine.columns]),
-                        dcc.Dropdown(
-                            id='ycol-widget_4',
-                            value='pH',  # REQUIRED to show the plot on the first page load
-                            options=[{'label': col, 'value': col} for col in wine.columns])
-                        ])  
-              ])
-    ]
-)
+                    
+                    html.H1('Various Features in Different Quality Factors'),
+                    dbc.Row([
+                        dbc.Col([
+                            dbc.Card(
+                                dbc.CardBody(html.H5('Wine Type')),
+                                color='info'),
+
+                            dcc.Checklist(
+                                id = "winetype",
+                                options = [
+                                    {"label": "White", "value": "white"},
+                                    {"label": "Red", "value": "red"}
+                                ],
+                                value = ["red", "white"],
+                                labelStyle={"display": "block"}
+                                )
+                            ]),
+                        dbc.Col([
+                            html.H3('Select your variables:'),
+
+                            html.H4('X-axis'),
+            
+           
+                            dcc.Dropdown(
+                                id='xcol-widget',
+                                value='pH',
+                                options=[{'label': col, 'value': col} for col in wine.columns],
+                                clearable = False
+                            ),
+
+                            html.H4("Y-axis"),
+
+                            dcc.Dropdown(
+                                id='ycol-widget',
+                                value='pH',
+                                options=[{'label': col, 'value': col} for col in wine.columns],
+                                clearable = False
+                                ),
+                            ]),
+
+                            html.Iframe(
+                                id = "scatter",
+                                # srcDoc = plot_scatter(),
+                                style={'border-width': '0', 'width': '120%', 'height': '700px'})
+
+                            ])
+             ]
+                   
+    )])

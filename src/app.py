@@ -78,9 +78,7 @@ variables = corr_df["level_0"].unique()
 variables = np.delete(variables, np.argwhere(variables == "quality_factor")) #Don't want this as an option in scatterplot
 
 
-# imort data
 
-wine = pd.read_csv('src/data/wine_quality.csv')
 #-----------------------------
 
 
@@ -116,7 +114,7 @@ def display_page(pathname):
         return overview.create_layout(app)
 
 
- # first plot   
+ # first plot   Luka
 @app.callback(
      Output('first_plot', 'srcDoc'),
      Input('xcol-widget', 'value'))
@@ -127,14 +125,14 @@ def plot_altair(xcol):
     chart = alt.Chart(wine
             ).transform_density(
                 density=xcol,
-                groupby=['Wine', 'Quality_Factor'],
+                groupby=['type', 'quality_factor'],
                 as_=['value', 'density'],
                 steps=200, # bandwidth=5
             ).mark_area(opacity=0.6).encode(
                 alt.X('value:Q', title=str(xcol+' '+units[xcol]), axis=alt.Axis(labels=True, grid=True)),
                 alt.Y('density:Q', title=None, axis=alt.Axis(labels=False, grid=False, ticks=False)),
-                alt.Color('Wine', scale=alt.Scale(range=['darkred', '#ff9581'])),
-                alt.Facet('Quality_Factor:N', columns = 1)
+                alt.Color('type', scale=alt.Scale(range=['darkred', '#ff9581'])),
+                alt.Facet('quality_factor:N', columns = 1)
             ).properties(
                 #height=200, width=400,
                 title = alt.TitleParams(
@@ -144,20 +142,62 @@ def plot_altair(xcol):
             ).configure_view(stroke=None).configure_headerFacet(title=None, labelAlign='right', labelAnchor='end', labelFontWeight=600, labelFontSize=12).interactive()
     
     return chart.to_html()
+###################################
+
+# Set up callbacks/backend
+# @app.callback(
+#      Output('scatter','srcDoc'),
+#      Input('xcol-widget', 'value'),
+#      Input('ycol-widget', 'value'),
+#      Input("winetype", "value")
+#      )
+
+# def plot_scatter(xcol,ycol, winetype):
+
+#     wine_dif = wine.loc[(wine['type'].isin(winetype))]
+
+#     brush = alt.selection_interval()
+#     click = alt.selection_multi(fields=['type'], bind='legend')
+
+#     base = alt.Chart(wine_dif).properties(
+#     width=400,
+#     height=400
+#     ).add_selection(brush)
+
+#     points = base.mark_point().encode(
+#     x = alt.X(xcol, scale=alt.Scale(zero=False)),
+#     y = alt.Y(ycol, scale=alt.Scale(zero=False)),
+#     color=alt.condition(brush, 'quality_factor:N', alt.value('lightgray')),
+#     opacity=alt.condition(click, alt.value(0.9), alt.value(0.2))
+#     )
+    
+#     bars = alt.Chart(wine_dif, title="Percentage of Each Quality Factor").transform_joinaggregate(
+#     total='count(*)'
+#     ).transform_calculate(
+#     pct='1 / datum.total'
+#     ).mark_bar().encode(
+#     alt.X('sum(pct):Q', axis=alt.Axis(format='%')),
+#     alt.Y('quality_factor:N'),
+#     color = 'quality_factor:N',
+#     tooltip = 'count(quality_factor):Q'
+#     ).transform_filter(brush)
+
+#     hists = base.mark_bar(opacity=0.5, thickness=100).encode(
+#     x=alt.X('quality',
+#             bin=alt.Bin(step=1), # step keeps bin size the same
+#             scale=alt.Scale(zero=False)),
+#     y=alt.Y('count()',
+#             stack=None),
+#     color=alt.Color('quality_factor:N'),
+#     tooltip = 'count(quality):Q'
+#     ).transform_filter(brush)
+    
+#     chart = (points & bars | hists).add_selection(click)
+#     return chart.to_html()
 
 
-# second plot
-@app.callback(
-     Output('histgram','srcDoc'),
-     Input('xcol-widget_2', 'value')
-     )
-def plot_altair_2(xcol):
-    chart= alt.Chart(wine).mark_bar().encode(
-    x=alt.X(xcol, type='quantitative', bin=alt.Bin(maxbins=30)),
-    y=alt.Y('count()'),
-    color='final_quality').interactive()
-    return chart.to_html()
 
+####################
 # thrid plot
 @app.callback(
      Output('third_plot','srcDoc'),
