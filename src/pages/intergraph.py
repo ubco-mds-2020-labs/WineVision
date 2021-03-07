@@ -1,3 +1,4 @@
+
 import numpy as np
 import pandas as pd
 import altair as alt
@@ -15,7 +16,6 @@ from utils import Header, make_dash_table
 # imort data
 
 wine = pd.read_csv("src/data/wine_quality.csv")
-alt.data_transformers.enable("data_server")
 #---------------------
 
 def create_layout(app):

@@ -121,23 +121,31 @@ def display_page(pathname):
  # first plot   
 @app.callback(
      Output('first_plot', 'srcDoc'),
-     Input('xcol-widget', 'value')
-     )
+     Input('xcol-widget', 'value'))
+
 def plot_altair(xcol):
-    chart= alt.Chart(wine).transform_density(
-     'pH',
-     groupby=['quality', 'final_quality'],
-     as_=['pH', 'density']).mark_area(opacity=0.4).encode(
-     x='pH',
-     y='density:Q',
-     color='quality:N').properties(
-     width=360,
-     height=360
-).configure_title(fontSize=18
-).configure_axis(
-    labelFontSize=12,
-    titleFontSize=15
-)
+    units = {'Fixed Acidity':'(g/dm3)', 'Volatile Acidity':'(g/dm3)', 'Citric Acid':'(g/dm3)',
+             'Residual Sugar':'(g/dm3)', 'Chlorides':'(g/dm3)', 'Density':'(g/dm3)', 'Sulphates':'(g/dm3)',
+             'Free Sulfur Dioxide':'(mg/dm3)', 'Total Sulfur Dioxide':'(mg/dm3)', 'Alcohol':'(%vol)', 'pH':''}
+    chart = alt.Chart(wine
+            ).transform_density(
+                density=xcol,
+                groupby=['Wine', 'Quality_Factor'],
+                as_=['value', 'density'],
+                steps=200, # bandwidth=5
+            ).mark_area(opacity=0.6).encode(
+                alt.X('value:Q', title=str(xcol+' '+units[xcol]), axis=alt.Axis(labels=True, grid=True)),
+                alt.Y('density:Q', title=None, axis=alt.Axis(labels=False, grid=False, ticks=False)),
+                alt.Color('Wine', scale=alt.Scale(range=['darkred', '#ff9581'])),
+                alt.Facet('Quality_Factor:N', columns = 1)
+            ).properties(
+                #height=200, width=400,
+                title = alt.TitleParams(
+                text='Wine Quality Factor Distributions', 
+                align='left', fontSize=14,
+                subtitle='Reds and Whites superimposed', subtitleFontSize=12)
+            ).configure_view(stroke=None).configure_headerFacet(title=None, labelAlign='right', labelAnchor='end', labelFontWeight=600, labelFontSize=12).interactive()
+    
     return chart.to_html()
 
 # second plot
@@ -163,7 +171,6 @@ def plot_altair_3(xcol,ycol):
     select_quality = alt.selection_single(
     name='Select', fields=['quality'], init={'quality': 3.0},
     bind=alt.binding_range(min=3.0, max=9.0, step=1.0))
-
     chart= alt.Chart(wine,title=ycol+" VS "+xcol).mark_circle(opacity=0.5).encode(
         alt.X(xcol),
         alt.Y(ycol),
