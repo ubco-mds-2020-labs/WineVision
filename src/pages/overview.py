@@ -1,15 +1,59 @@
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_bootstrap_components as dbc
 import altair as alt
 from utils import Header, make_dash_table
 import pathlib
 import pandas as pd
 import numpy as np
+# Allow large data set
+alt.data_transformers.enable('data_server')
 
+# Data Wrangling
+whitewine = pd.read_csv('Data/raw/winequality-white.csv', sep=';')
+redwine = pd.read_csv('Data/raw/winequality-red.csv', sep=';')
+
+whitewine["type"] = "white"
+redwine["type"] = "red"
+
+wine = redwine.append(whitewine)
+
+# Correlation Data
+
+# Get correlations for each wine type
+corr_df_white = wine.loc[wine['type'] == 'white'].select_dtypes('number').corr('spearman').stack().reset_index(name='corr')
+corr_df_white["type"] = "white"
+
+corr_df_red = wine.loc[wine['type'] == 'red'].select_dtypes('number').corr('spearman').stack().reset_index(name='corr')
+corr_df_red["type"] = "red"
+
+# Bind them together
+corr_df = corr_df_white.append(corr_df_red)
+
+#Remove full correlations on diag
+corr_df.loc[corr_df['corr'] == 1, 'corr'] = 0
+# Add column for absolute corr 
+corr_df['abs'] = corr_df['corr'].abs()
+
+# Get a list of unique column names
+variables = corr_df["level_0"].unique()
+# Matrix plot. I couldn't figure out how to make it work at the bottom without a callback input
+def plot_matrix():
+    click = alt.selection_multi(fields=['type'], bind='legend') 
+    chart = alt.Chart(corr_df,title="Correlation Plot for Numeric Features").mark_square().encode(
+        color=alt.Color('type', scale=alt.Scale(domain=['red', 'white'],
+                range=['darkred', 'blue'])),
+        x='level_0',
+        y='level_1',
+        size='abs',
+        opacity=alt.condition(click, alt.value(0.7), alt.value(0)),
+        tooltip=["type", "corr"]
+    ).configure_title(fontSize=18).properties(height=250, width=250).add_selection(click)
+    return chart.to_html()
 def create_layout(app):
     # Page layouts
     return html.Div(    
-        [html.Div([Header(app)]),
+        [Header(app),
             # page 1
             html.Div(
                 [# Row 3
@@ -45,8 +89,82 @@ def create_layout(app):
                     )
                     
                 ],
-            ),    
+            ),
+            dbc.Container([
+                dbc.Row([
+                    dbc.Col([
+                        html.Iframe(
+                            id = "matrix",
+                            style={'border-width': '0', 'width': '100%', 'height': '400px'}),
+
+                        html.H5("Wine Type"),
+
+                        dcc.Checklist(
+                            id = "winetype",
+                            options = [
+                                {"label": "White Wines", "value": "white"},
+                                {"label": "Red Wines", "value": "red"}
+                            ],
+                            value = ["red", "white"],
+                            labelStyle={"display": "block"}
+                        ),
+
+                        html.H5("Quality"),
+
+                        dcc.Slider(
+                            id = "quality",
+                            min=0,
+                            max=3,
+                            step=1,
+                            value = 1,
+                            marks={
+                                0: "below average",
+                                1: "average",
+                                2: "above average",
+                                3: "any"
+                            }
+                        )
+
+                    ]),
+                    dbc.Col([
+                        html.Iframe(
+                            id = "scatter",
+                            style={'border-width': '0', 'width': '100%', 'height': '400px'}),
                 
-        ],
-        className="page",
+                    html.H5("x-axis:"),
+
+                    dcc.Dropdown(
+                            id = "x-axis",
+                            options=[{"label": i, "value": i} for i in variables],
+                            value = "alcohol",
+                            clearable = False
+                        ),
+
+                    html.H5("y-axis"),
+
+                    dcc.Dropdown(
+                            id = "y-axis",
+                            options=[{"label": i, "value": i} for i in variables],
+                            value = "chlorides",
+                            clearable = False),
+     
+                        ])
+                 ]),
+                dbc.Row([
+                    html.Iframe(
+                        id = "histogram",
+                        style={'border-width': '0', 'width': '1200px', 'height': '400px'}
+                     ),
+                ]),
+
+                    dcc.Dropdown(
+                        id = "histvalue",
+                        options=[{"label": i, "value": i} for i in variables],
+                        value = "chlorides",
+                        clearable = False)
+                    ]),
+
+        ]
+
+        #className="page",
     )

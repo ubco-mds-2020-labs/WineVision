@@ -15,7 +15,7 @@ import numpy as np
 #------------------
 # imort data
 
-wine = pd.read_csv("data/wine_quality.csv")
+wine = pd.read_csv("src/data/wine_quality.csv")
 wine['Taste'] = np.where(wine['quality']<6, 'Below average', (np.where(wine['quality']>6.5, 'Above average', 'Average')))
 
 #---------------------
@@ -125,6 +125,88 @@ def plot_altair_4(xcol,ycol):
                                                                                           x='count(Taste):Q',tooltip='count(Taste):Q').transform_filter(brush).properties(height=150, width=600)
     return (points & bars).to_html()
 
+
+
+##############------------eric---------
+
+# Make scatterplot
+
+# Matrix plot. I couldn't figure out how to make it work at the bottom without a callback input
+@app.callback(
+    Output("matrix", "srcDoc"),
+    Input("quality", "value"),
+    Input("winetype", "value")
+)
+def plot_matrix(qual, winetype):
+    if qual in [0,1,2]:
+        subset = corr_df.loc[(corr_df["quality_factor"] == qual) & (corr_df["type"].isin(winetype))]
+    else:
+        subset = corr_df.loc[corr_df["type"].isin(winetype)]
+    chart = alt.Chart(subset,title="Correlation Plot for Numeric Features").mark_square().encode(
+        alt.X('level_0', title = None),
+        alt.Y('level_1', title = None),
+        color=alt.Color('type', scale=alt.Scale(domain=['red', 'white'],
+                range=['darkred', 'blue'])),
+        size='abs',
+        tooltip=["type", "corr"]
+    ).configure_title(fontSize=18).properties(height=250, width=250)
+    return chart.to_html()
+
+
+# Make scatterplot
+
+@app.callback(
+    Output("scatter", "srcDoc"),
+    Input("x-axis", "value"),
+    Input("y-axis", "value"), 
+    Input("quality", "value"),
+    Input("winetype", "value")
+)
+def plot_scatter(xcol, ycol, qual, winetype):
+    # Subset by quality
+    if qual in [0,1,2]:
+        subset = wine.loc[(wine["quality_factor"] == qual) & (wine["type"].isin(winetype))]
+    else:
+        subset = wine.loc[wine["type"].isin(winetype)]
+    # Subset by wine type (red, white, or both)
+
+    chart = alt.Chart(subset).mark_circle(size = 0.25).encode(
+    alt.X(xcol, scale = alt.Scale(zero = False)),
+    alt.Y(ycol, scale = alt.Scale(zero = False)),
+    alt.Color("type", scale=alt.Scale(domain=['red', 'white'],
+                range=['darkred', 'blue']))
+    )
+    regression = chart.transform_regression(xcol,ycol, groupby = ["type"],
+                                        # By default lines don't go beyond data and are hard to read in this dense dataset
+                                       extent = [min(wine[xcol]) - 1, max(wine[xcol]) + 1]).mark_line(size = 5)
+    chart = (chart + regression)
+    return chart.to_html()
+
+
+# Make Histogram
+
+@app.callback(
+    Output("histogram", "srcDoc"),
+    Input("quality", "value"),
+    Input("winetype", "value"),
+    Input("histvalue", "value")
+)
+def plot_histogram(qual, winetype, histvalue):
+    if qual in [0,1,2]:
+        subset = wine.loc[(wine["quality_factor"] == qual) & (wine["type"].isin(winetype))]
+    else:
+        subset = wine.loc[wine["type"].isin(winetype)]
+
+    chart = alt.Chart(subset).mark_bar().encode(
+        alt.X(histvalue, type = "quantitative", bin=alt.Bin(maxbins=30)),
+        alt.Y("count()"),
+        alt.Color("type", scale=alt.Scale(domain=['red', 'white'],
+                range=['darkred', 'blue']))
+    ).properties(height=300, width=1000)
+    return chart.to_html()
+
+
+################------------------------
 
 if __name__ == "__main__":
     app.run_server(debug=True)
