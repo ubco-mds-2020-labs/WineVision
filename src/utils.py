@@ -53,8 +53,8 @@ def get_menu():
                 className="tab",
             ),
             dcc.Link(
-                "Machine Learning",
-                href="/WineVison/src/modelling",
+                "Wine Type Comparison",
+                href="/WineVison/src/Wine_type",
                 className="tab",
             ),
         ],

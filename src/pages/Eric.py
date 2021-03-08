@@ -12,9 +12,9 @@ import dash_bootstrap_components as dbc
 alt.data_transformers.enable('data_server')
 
 # Get data
-wine = pd.read_csv("data/processed/wine_quality.csv")
+wine = pd.read_csv("/data/processed/wine_quality.csv")
 
-corr_df = pd.read_csv("data/processed/correlation.csv")
+corr_df = pd.read_csv("/data/processed/correlation.csv")
 
 # Get a list of unique column names
 variables = corr_df["level_0"].unique()
