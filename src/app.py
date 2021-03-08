@@ -4,7 +4,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import altair as alt
 from dash.dependencies import Input, Output
-from pages import (
+from src.pages import (
     qf,
     overview,
     Wine_type
