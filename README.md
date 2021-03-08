@@ -1,14 +1,14 @@
 # **Wine Vision App** <img src="src/assets/logo.png" width="85" height="45" /> 
 ***Discover the physiochemical secrets to what makes a wine wonderful...***
 
+*You can visit the app directly by clicking here* &rarr; &rarr; &rarr; [***Wine Vision***](https://wine-vision.herokuapp.com/)
+
 ![insert app screenshot here :)]()
 
 ## Welcome!
-Hello and thank you for stopping by the [Wine Vision App](https://wine-vision.herokuapp.com/)! :confetti_ball::balloon::confetti_ball::balloon:
+:confetti_ball::balloon::confetti_ball::balloon: Hello and thank you for stopping by the [Wine Vision App](https://wine-vision.herokuapp.com/)! :confetti_ball::balloon::confetti_ball::balloon:
 
-*You can visit the app directly by clicking here* &rarr; &rarr; &rarr; [***Wine Vision***](https://wine-vision.herokuapp.com/)
-
-Otherwise, this page is our homebase providing you information on the project. 
+This page is our homebase providing you information on the project. 
 Navigate directly to a section of your choice or scroll down to find out more.
 
 * [What are we doing? (And why?)](#what-are-we-doing)
