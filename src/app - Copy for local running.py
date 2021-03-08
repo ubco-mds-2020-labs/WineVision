@@ -15,7 +15,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 
-from src.pages import ( #src.pages for heroku
+from pages import ( #src.pages for heroku
     qf,
     overview,
     Wine_type
