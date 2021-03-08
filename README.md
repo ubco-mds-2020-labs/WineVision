@@ -31,11 +31,10 @@ In general, wine quality evaluation is assessed by physicochemical tests and sen
 
 From a business perspective, producers are constantly looking for ways to outperform the competition by creating the best wine they can. Those who understand the fundamental physiochemical aspects of wine will have a greater edge into crafting an enjoyable and profitable product. So, we introduce to you the *Wine Vision Dashboard*.
 
-![Wine chemistry](https://d2cbg94ubxgsnp.cloudfront.net/Pictures/480x270//9/2/5/139925_160412_PRS_AWRI_GAGO_0262.jpg)
-
 ### The solution
 **Our interactive dashboard will allow users to explore a number of physicochemical variables and how they interact to determine the subjective quality of a wine. Our visualizations will allow users to test and discover for themselves these relationships.** Wine producers, wine enthusiasts, and curious individuals can all make use of this dashboard.
 
+![Wine chemistry](https://d2cbg94ubxgsnp.cloudfront.net/Pictures/480x270//9/2/5/139925_160412_PRS_AWRI_GAGO_0262.jpg)
 
 ## App Description
 The Vinho Verde wine Dashboard has three tabs; Interactive Graphics, Explore the Dataset and Machine Learning.
