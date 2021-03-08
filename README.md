@@ -1,8 +1,7 @@
-# Visit the App:
-[**Wine Vision**](https://wine-vision.herokuapp.com/)
+# [Visit the **Wine Vision App**](https://wine-vision.herokuapp.com/)
+![](https://www.google.com/url?sa=i&url=https%3A%2F%2Fgiphy.com%2Fgifs%2Fcheers-clinking-glasses-michelle-goggins-JQotpdgm1z829bAt8n&psig=AOvVaw07FcAVZ34LQHu0FL5REh1R&ust=1615264978846000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLDZ4ozxn-8CFQAAAAAdAAAAABAS)
 
 ## Description
-
 The Vinho Verde wine Dashboard has three tabs; Interactive Graphics, Explore the Dataset and Machine Learning.
 
 The Interactive Graphics page contains a number of graphis to explore the effects of physicochemical properties on wine quality. On the left hand side users are able to select the wine type (eg. red wine, white wine) as well as the physicochemical features of interest, with subset ranges if they so desire. Some possible visualizations are as follows:
