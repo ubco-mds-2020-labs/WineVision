@@ -30,7 +30,7 @@ app.layout = dbc.Container([
         dbc.Col([
             html.Iframe(
                 id = "matrix",
-                style={'border-width': '0', 'width': '100%', 'height': '400px'}),
+                style={'border-width': '0', 'width': '500px', 'height': '500px'}),
 
             html.H5("Wine Type"),
 
@@ -41,7 +41,7 @@ app.layout = dbc.Container([
                     {"label": "Red Wines", "value": "red"}
                 ],
                 value = ["red", "white"],
-                labelStyle={"display": "block"}
+                labelStyle={"display": "inline-block"}
             ),
 
             html.H5("Quality"),
@@ -64,7 +64,7 @@ app.layout = dbc.Container([
         dbc.Col([
             html.Iframe(
                 id = "scatter",
-                style={'border-width': '0', 'width': '100%', 'height': '400px'}),
+                style={'border-width': '0', 'width': '500px', 'height': '500px'}),
                 
             html.H5("x-axis:"),
 
@@ -96,7 +96,9 @@ app.layout = dbc.Container([
             id = "densvalue",
             options=[{"label": i, "value": i} for i in variables],
             value = "Chlorides (g/dm^3)",
-            clearable = False)
+            clearable = False),
+
+    dbc.Row([html.H5("\t Density Plot Variable")])
 
 ])
 
@@ -118,7 +120,7 @@ def plot_matrix(qual, winetype):
                 range=['darkred', 'blue'])),
         size='abs',
         tooltip=["Wine", "corr"]
-    ).configure_title(fontSize=18).properties(height=250, width=250)
+    ).configure_title(fontSize=18).properties(height=290, width=240)
     return chart.to_html()
 
 
@@ -144,7 +146,7 @@ def plot_scatter(xcol, ycol, qual, winetype):
     alt.Y(ycol, scale = alt.Scale(zero = False)),
     alt.Color("Wine", scale=alt.Scale(domain=['red', 'white'],
                 range=['darkred', 'blue']))
-    )
+    ).properties(height=350, width=330)
     regression = chart.transform_regression(xcol,ycol, groupby = ["Wine"],
                                         # By default lines don't go beyond data and are hard to read in this dense dataset
                                        extent = [min(wine[xcol]) - 1, max(wine[xcol]) + 1]).mark_line(size = 5)
@@ -153,12 +155,17 @@ def plot_scatter(xcol, ycol, qual, winetype):
 
 # Lukas density plot
 @app.callback(
-     Output('densityplot', 'srcDoc'),
-     Input('densvalue', 'value')
+    Output("densityplot", "srcDoc"),
+    Input("quality", "value"),
+    Input("winetype", "value"),
+    Input("densvalue", "value")
 )
-def plot_altair(xcol):
-        
-    chart = alt.Chart(wine
+def plot_density(qual, winetype, xcol):
+    if qual in [0,1,2]:
+        subset = wine.loc[(wine["Quality Factor Numeric"] == qual) & (wine["Wine"].isin(winetype))]
+    else:
+        subset = wine.loc[wine["Wine"].isin(winetype)]    
+    chart = alt.Chart(subset
             ).transform_density(
                 density=xcol,
                 groupby=['Wine', 'Quality Factor'],
@@ -167,42 +174,42 @@ def plot_altair(xcol):
             ).mark_area(opacity=0.5).encode(
                 alt.X('value:Q', title=xcol, axis=alt.Axis(labels=True, grid=True)),
                 alt.Y('density:Q', title=None, axis=alt.Axis(labels=False, grid=False, ticks=False)),
-                alt.Color('Wine', scale=alt.Scale(range=['darkred', '#ff9581'])),
-                alt.Facet('Quality Factor:N', columns = 1)
+                alt.Color("Wine", scale=alt.Scale(domain=['red', 'white'],
+                range=['darkred', 'blue']))
             ).properties(
-                height=200, width=400,
+                height=300, width=1000,
                 title = alt.TitleParams(
                 text='Wine Quality Factor Distributions', 
-                align='left', fontSize=14,
-                subtitle='Reds and Whites superimposed', subtitleFontSize=12)
-            ).configure_view(stroke=None).configure_headerFacet(title=None, labelAlign='right',labelAnchor='end',  labelFontWeight=600, labelFontSize=12
-            ).interactive()
+                align='left', fontSize=14)
+            ).configure_view(stroke=None)
       
     return chart.to_html()
 
 
 
-# Make Histogram
+# Make Histogram - cut in favor of density plot
 
 # @app.callback(
-#     Output("histogram", "srcDoc"),
+#     Output("densityplot", "srcDoc"),
 #     Input("quality", "value"),
 #     Input("winetype", "value"),
-#     Input("histvalue", "value")
+#     Input("densvalue", "value")
 # )
-# def plot_histogram(qual, winetype, histvalue):
+# def plot_density(qual, winetype, densvalue):
 #     if qual in [0,1,2]:
 #         subset = wine.loc[(wine["Quality Factor Numeric"] == qual) & (wine["Wine"].isin(winetype))]
 #     else:
 #         subset = wine.loc[wine["Wine"].isin(winetype)]
 
-#     chart = alt.Chart(subset).mark_bar().encode(
+#     chart = alt.Chart(subset).transform_density().encode(
 #         alt.X(histvalue, type = "quantitative", bin=alt.Bin(maxbins=30)),
 #         alt.Y("count()"),
 #         alt.Color("Wine", scale=alt.Scale(domain=['red', 'white'],
 #                 range=['darkred', 'blue']))
 #     ).properties(height=300, width=1000)
 #     return chart.to_html()
+
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
