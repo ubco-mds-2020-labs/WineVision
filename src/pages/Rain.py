@@ -6,39 +6,22 @@ import dash_core_components as dcc
 from dash.dependencies import Input, Output
 import altair as alt
 import dash_bootstrap_components as dbc
+import dash_bootstrap_components as dbc
 
 
 alt.data_transformers.enable('data_server')
 
-wine = pd.read_csv('wine_quality.csv')
-
-# white_wine = pd.read_csv('winequality-white.csv', sep=';')
-# red_wine = pd.read_csv('winequality-red.csv', sep=';')
-
-# white_wine["type"] = "white"
-# red_wine["type"] = "red"
-# wine = red_wine.append(white_wine)
-
-# wine_df.loc[0] = ['g/dm3','g/dm3','g/dm3','g/dm3','g/dm3','mg/dm3','mg/dm3','g/cm3', np.nan,'g/dm3','%vol', np.nan, np.nan]
-# wine_df.to_csv('wine_new.csv', index=False)
-
-# wine = pd.read_csv('wine_new.csv', header=[0,1])
-# wine.columns = wine.columns.map(' in '.join)
-# wine = wine.rename(columns = {'pH in Unnamed: 8_level_1':'pH', 'quality in Unnamed: 11_level_1':'quality', 'type in Unnamed: 12_level_1': 'type'})
-# wine['quality_factor'] = np.where(wine['quality']<6, 'Below Average', (np.where(wine['quality']>6.5, 'Above Average', 'Average')))
-
-
-# Setup app and layout/frontend
+wine = pd.read_csv("data/processed/wine_quality.csv")
 
 app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-app.layout = dbc.Container([
+app.layout = 
+dbc.Container([
     html.H1('Various Features in Different Quality Factors'),
     dbc.Row([
         dbc.Col([
             dbc.Card(
-                dbc.CardBody(html.H3('Wine Type', className = 'wine-type'),
-                html.P('You can select either type or both', className = 'wine-type')),
+                dbc.CardBody(html.H3('Wine Type')),
                 color='info'),
 
             dcc.Checklist(
@@ -141,5 +124,3 @@ def plot_scatter(xcol,ycol, winetype):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-
-

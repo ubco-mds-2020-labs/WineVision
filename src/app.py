@@ -5,7 +5,7 @@ import dash_html_components as html
 import altair as alt
 from dash.dependencies import Input, Output
 from pages import (
-    intergraph,
+    qf,
     overview,
     Wine_type
 )
@@ -50,8 +50,8 @@ app.layout = html.Div(
 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
-    if pathname == '/WineVison/src/intergraph':
-        return intergraph.create_layout(app)
+    if pathname == '/WineVison/src/qf':
+        return qf.create_layout(app)
 
     elif pathname == "/WineVison/src/Wine_type":
         return Wine_type.create_layout(app)
@@ -59,7 +59,7 @@ def display_page(pathname):
     elif pathname == "/WineVision/src/full-view":
         return (
             overview.create_layout(app),
-            intergraph.create_layout(app),
+            qf.create_layout(app),
             Wine_type.create_layout(app)
         )
 
@@ -76,7 +76,7 @@ def display_page(pathname):
 
 # Set up callbacks/backend
 @app.callback(
-     Output('scatter_rain','srcDoc'),
+     Output('scatter_1','srcDoc'),
      Input('xcol-widget', 'value'),
      Input('ycol-widget', 'value'),
      Input("winetype", "value")
@@ -97,7 +97,7 @@ def plot_scatter(xcol,ycol, winetype):
     points = base.mark_point().encode(
     x = alt.X(xcol, scale=alt.Scale(zero=False)),
     y = alt.Y(ycol, scale=alt.Scale(zero=False)),
-    color=alt.condition(brush, 'Quality_Factor:N', alt.value('lightgray')),
+    color=alt.condition(brush, 'Quality Factor:N', alt.value('lightgray')),
     opacity=alt.condition(click, alt.value(0.9), alt.value(0.2))
     )
     
@@ -107,9 +107,9 @@ def plot_scatter(xcol,ycol, winetype):
     pct='1 / datum.total'
     ).mark_bar().encode(
     alt.X('sum(pct):Q', axis=alt.Axis(format='%')),
-    alt.Y('Quality_Factor:N'),
-    color = 'Quality_Factor:N',
-    tooltip = 'count(Quality_Factor):Q'
+    alt.Y('Quality Factor:N'),
+    color = 'Quality Factor:N',
+    tooltip = 'count(Quality Factor):Q'
     ).transform_filter(brush)
 
     hists = base.mark_bar(opacity=0.5, thickness=100).encode(
@@ -118,16 +118,13 @@ def plot_scatter(xcol,ycol, winetype):
             scale=alt.Scale(zero=False)),
     y=alt.Y('count()',
             stack=None),
-    color=alt.Color('Quality_Factor:N'),
+    color=alt.Color('Quality Factor:N'),
     tooltip = 'count(Quality):Q'
     ).transform_filter(brush)
     
     chart = (points & bars | hists).add_selection(click)
     return chart.to_html()
 
-
-if __name__ == '__main__':
-    app.run_server(debug=True)
 
 
 
@@ -137,7 +134,6 @@ if __name__ == '__main__':
 
 
 # ------------eric-------------------------------------------------------------------------------
-
 # Matrix plot. I couldn't figure out how to make it work at the bottom without a callback input
 @app.callback(
     Output("matrix", "srcDoc"),
@@ -156,7 +152,7 @@ def plot_matrix(qual, winetype):
                 range=['darkred', 'blue'])),
         size='abs',
         tooltip=["Wine", "corr"]
-    ).configure_title(fontSize=18).properties(height=250, width=250)
+    ).configure_title(fontSize=18).properties(height=290, width=240)
     return chart.to_html()
 
 
@@ -182,7 +178,7 @@ def plot_scatter(xcol, ycol, qual, winetype):
     alt.Y(ycol, scale = alt.Scale(zero = False)),
     alt.Color("Wine", scale=alt.Scale(domain=['red', 'white'],
                 range=['darkred', 'blue']))
-    )
+    ).properties(height=350, width=330)
     regression = chart.transform_regression(xcol,ycol, groupby = ["Wine"],
                                         # By default lines don't go beyond data and are hard to read in this dense dataset
                                        extent = [min(wine[xcol]) - 1, max(wine[xcol]) + 1]).mark_line(size = 5)
@@ -191,12 +187,17 @@ def plot_scatter(xcol, ycol, qual, winetype):
 
 # Lukas density plot
 @app.callback(
-     Output('densityplot', 'srcDoc'),
-     Input('densvalue', 'value')
+    Output("densityplot", "srcDoc"),
+    Input("quality", "value"),
+    Input("winetype", "value"),
+    Input("densvalue", "value")
 )
-def plot_altair(xcol):
-        
-    chart = alt.Chart(wine
+def plot_density(qual, winetype, xcol):
+    if qual in [0,1,2]:
+        subset = wine.loc[(wine["Quality Factor Numeric"] == qual) & (wine["Wine"].isin(winetype))]
+    else:
+        subset = wine.loc[wine["Wine"].isin(winetype)]    
+    chart = alt.Chart(subset
             ).transform_density(
                 density=xcol,
                 groupby=['Wine', 'Quality Factor'],
@@ -205,19 +206,16 @@ def plot_altair(xcol):
             ).mark_area(opacity=0.5).encode(
                 alt.X('value:Q', title=xcol, axis=alt.Axis(labels=True, grid=True)),
                 alt.Y('density:Q', title=None, axis=alt.Axis(labels=False, grid=False, ticks=False)),
-                alt.Color('Wine', scale=alt.Scale(range=['darkred', '#ff9581'])),
-                alt.Facet('Quality Factor:N', columns = 1)
+                alt.Color("Wine", scale=alt.Scale(domain=['red', 'white'],
+                range=['darkred', 'blue']))
             ).properties(
-                height=200, width=400,
+                height=300, width=1000,
                 title = alt.TitleParams(
                 text='Wine Quality Factor Distributions', 
-                align='left', fontSize=14,
-                subtitle='Reds and Whites superimposed', subtitleFontSize=12)
-            ).configure_view(stroke=None).configure_headerFacet(title=None, labelAlign='right',labelAnchor='end',  labelFontWeight=600, labelFontSize=12
-            ).interactive()
+                align='left', fontSize=14)
+            ).configure_view(stroke=None)
       
     return chart.to_html()
-
 
 
 if __name__ == '__main__':

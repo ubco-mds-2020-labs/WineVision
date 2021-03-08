@@ -23,15 +23,17 @@ corr_df = pd.read_csv("data/processed/correlation.csv")
 # Get a list of unique column names
 variables = corr_df["level_0"].unique()
 variables = np.delete(variables, np.argwhere(variables == "Quality Factor"))
-variables = np.delete(variables, np.argwhere(variables == "Quality Factor Numeric")) #Don't want this as an option in scatterplot
+# Don't want this as an option in scatterplot
+variables = np.delete(variables, np.argwhere(
+    variables == "Quality Factor Numeric"))
 
 
 # Matrix plot. I couldn't figure out how to make it work at the bottom without a callback input
 def plot_matrix():
-    click = alt.selection_multi(fields=['type'], bind='legend') 
-    chart = alt.Chart(corr_df,title="Correlation Plot for Numeric Features").mark_square().encode(
+    click = alt.selection_multi(fields=['type'], bind='legend')
+    chart = alt.Chart(corr_df, title="Correlation Plot for Numeric Features").mark_square().encode(
         color=alt.Color('type', scale=alt.Scale(domain=['red', 'white'],
-                range=['darkred', 'blue'])),
+                                                range=['darkred', 'blue'])),
         x='level_0',
         y='level_1',
         size='abs',
@@ -40,13 +42,14 @@ def plot_matrix():
     ).configure_title(fontSize=18).properties(height=250, width=250).add_selection(click)
     return chart.to_html()
 
+
 def create_layout(app):
     # Page layouts
-    return html.Div(    
+    return html.Div(
         [Header(app),
             # page 1
             html.Div(
-                [# Row 3
+                [  # Row 3
                     html.Div(
                         [html.H3('Motivation'),
                             html.Br([]),
@@ -71,90 +74,15 @@ def create_layout(app):
                                 of physicochemical variables and how they interact to determine the subjective quality of a wine. \
                                 Our visualizations will allow users to test and discover for themselves these relationships. \
                                 Wine producers, wine enthusiasts, and curious individuals can all make use of this dashboard.",
-                                    style={'color':"#FFFFFF"},
-                                     className="row",  
-                                ),
+                            style={'color': "#FFFFFF"},
+                            className="row",
+                        ),
                         ],
                         className="product"
                     )
-                    
+
                 ],
-                className="twelve columns"
-            ),
-            dbc.Container([
-                dbc.Row([
-                    dbc.Col([
-                        html.Iframe(
-                            id = "matrix",
-                            style={'border-width': '0', 'width': '100%', 'height': '400px'}),
+            className="twelve columns")
 
-                        html.H5("Wine Type"),
-
-                        dcc.Checklist(
-                            id = "winetype",
-                            options = [
-                                {"label": "White Wines", "value": "white"},
-                                {"label": "Red Wines", "value": "red"}
-                            ],
-                            value = ["red", "white"],
-                            labelStyle={"display": "block"}
-                        ),
-
-                        html.H5("Quality"),
-
-                        dcc.Slider(
-                            id = "quality",
-                            min=0,
-                            max=3,
-                            step=1,
-                            value = 1,
-                            marks={
-                                0: "below average",
-                                1: "average",
-                                2: "above average",
-                                3: "any"
-                            }
-                        )
-
-                    ]),
-                    dbc.Col([
-                        html.Iframe(
-                            id = "scatter",
-                            style={'border-width': '0', 'width': '100%', 'height': '400px'}),
-                
-                    html.H5("x-axis:"),
-
-                    dcc.Dropdown(
-                            id = "x-axis",
-                            options=[{"label": i, "value": i} for i in variables],
-                            value = "alcohol",
-                            clearable = False
-                        ),
-
-                    html.H5("y-axis"),
-
-                    dcc.Dropdown(
-                            id = "y-axis",
-                            options=[{"label": i, "value": i} for i in variables],
-                            value = "chlorides",
-                            clearable = False),
-     
-                        ])
-                 ]),
-                dbc.Row([
-                    html.Iframe(
-                        id = "histogram",
-                        style={'border-width': '0', 'width': '1200px', 'height': '400px'}
-                     ),
-                ]),
-
-                    dcc.Dropdown(
-                        id = "histvalue",
-                        options=[{"label": i, "value": i} for i in variables],
-                        value = "chlorides",
-                        clearable = False)
-                    ]),
-
-        ]
-        #className="page",
+         ]
     )
