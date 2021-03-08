@@ -9,21 +9,46 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 
 from dash.dependencies import Input, Output
+<<<<<<< HEAD
 from pages import (intergraph, overview, modelling)
+=======
+<<<<<<< HEAD:.ipynb_checkpoints/app-checkpoint.py
+from src.pages import (
+    intergraph,
+    overview
+)
+import src.utils
+>>>>>>> main
 
 #------------------
 # imort data
 
+<<<<<<< HEAD
 wine = pd.read_csv("wine_quality.csv")
+=======
+wine = pd.read_csv("src/data/wine_quality.csv")
+=======
+from pages import (intergraph, overview, modelling)
+import utils
+#------------------
+# import data
+wine = pd.read_csv("wine_quality.csv")
+>>>>>>> main:src/app.py
+>>>>>>> main
 alt.data_transformers.enable('csv')
 
 #---------------------
 
 app = dash.Dash(
+<<<<<<< HEAD
     __name__, meta_tags=[
         {"name": "viewport", "content": "width=device-width"}],
     external_stylesheets=[
         "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap-grid.min.css"]
+=======
+    __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}],
+    external_stylesheets=["https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap-grid.min.css"]
+>>>>>>> main
 )
 server = app.server
 
@@ -118,7 +143,17 @@ def plot_altair_3(xcol,ycol):
      Output('fourth_plot','srcDoc'),
      Input('xcol-widget_4', 'value'),
      Input('ycol-widget_4', 'value')
+<<<<<<< HEAD
 )
+=======
+<<<<<<< HEAD:.ipynb_checkpoints/app-checkpoint.py
+)
+=======
+     )
+
+
+>>>>>>> main:src/app.py
+>>>>>>> main
 def plot_altair_4(xcol,ycol):
     brush = alt.selection_interval()
     points = alt.Chart(wine,title="Interactive Plot of "+ ycol+" vs "+ xcol +" for 3 Quality Levels" ).mark_point().encode(

@@ -7,7 +7,7 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 
 from utils import Header, make_dash_table
-import pathlib
+
 
 ## Allow large data set
 alt.data_transformers.enable('data_server')

@@ -13,6 +13,7 @@ from utils import Header, make_dash_table
 # imort data
 wine = pd.read_csv("wine_quality.csv")
 
+
 #---------------------
 
 def create_layout(app):
