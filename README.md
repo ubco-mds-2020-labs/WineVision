@@ -4,17 +4,17 @@
 ![insert app screenshot here :)]()
 
 ## Welcome!
-:confetti_ball::balloon::confetti_ball: Hello and thank you for visiting the [Wine Vision App](https://wine-vision.herokuapp.com/)! :confetti_ball::balloon::confetti_ball: 
+Hello and thank you for stopping by the [Wine Vision App](https://wine-vision.herokuapp.com/)! :confetti_ball::balloon::confetti_ball::balloon:
 
-You can visit the app by clicking here &rarr; &rarr; &rarr; [***Wine Vision***](https://wine-vision.herokuapp.com/)
+*You can visit the app directly by clicking here* &rarr; &rarr; &rarr; [***Wine Vision***](https://wine-vision.herokuapp.com/)
 
 Otherwise, this page is our homebase providing you information on the project. 
 Navigate directly to a section of your choice or scroll down to find out more.
 
 * [What are we doing? (And why?)](#what-are-we-doing)
-* [App Description](#app-description)
+* [Describing the App](#app-description)
 * [App Sketch](#app-sketch)
-* [The Data](#description-of-the-data)
+* [Describing the Data](#the-data)
 * [A Fun Usage Scenario](#a-fun-usage-scenario)
 * [So who are we?](#who-are-we)
 * [Want to get involved?](#get-involved)
@@ -28,6 +28,8 @@ Navigate directly to a section of your choice or scroll down to find out more.
 Wine making has always been a traditional practice passed down for many generations and studied extensively around the world. Yet, some of wine's secrets are still a mystery to most people, even wine producers! So how are we supposed to craft the perfect wine without knowing what makes it perfect?
 
 From a business perspective, there are 36 billion bottles of wine produced each year [1](https://www.winespectator.com/articles/how-many-bottles-of-wine-are-there-in-the-world-46410), and producers are constantly looking for ways to outperform the competition by creating the best wine they can. Physicochemical components are fundamental to a wine’s quality and those who understand this aspect of wine will have a greater edge into crafting an enjoyable and profitable product. 
+
+![Wine chemistry](https://d2cbg94ubxgsnp.cloudfront.net/Pictures/480x270//9/2/5/139925_160412_PRS_AWRI_GAGO_0262.jpg)
 
 ### The solution
 Wine quality evaluation is the main part of the certification process to improve wine making. It is generally assessed by physicochemical tests and sensory analysis. The relationship between physicochemical structure and subjective quality is complex. No individual component can be used to accurately predict a wine’s quality, and interactions are as important as the components themselves. For example, perhaps higher alcohol content only improves a wine within a certain range of sulphate content, and wines outside this range are made worse by higher alcohol content. Trained wine tasting experts are able to reliably score wine on a scale ranging from 0 (very bad) to 10 (excellent), and those scores can be used to determine how these physicochemical properties affect quality. 
@@ -50,27 +52,28 @@ The Explore the Dataset tab will focus on descriptive data analysis, allowing us
 Lastly, the Machine learning tab will focus on modelling and machine learning techniques. This section will be primitive in the early stage of the project, and will likely just include simple linear regression for now. We plan to expand this section when we do the project in R.
 
 
-## Description of the Data
+## App Sketch
+![App Sketch](app_sketch.png)
+
+## The Data
 Portugal is second in the world for per-capita wine consumption [2](https://www.nationmaster.com/nmx/ranking/wine-consumption-per-capita) and eleventh for wine production [3](https://en.wikipedia.org/wiki/List_of_wine-producing_regions), so by no coincidence we built our dashboard on the famous Portuguese wine quality data set from Cortez et al., 2009. 
 
 Data was collected from Vinho Verde wines originating from the northwest regions of Portugal. These wines have a medium alcohol content, and are particularly sought for their freshness in summer months. Each wine sample was evaluated by at least three sensory assessors (using blind tastes) who graded the wine from 0 (worst) to 10 (best). The final quality score is given by the median of these evaluations.
 
 The dataset consists of the physiochemical composition and sensory test results for 4898 white and 1599 red wine samples which were collected from May 2004 to February 2007. Each wine sample contains 12 variables that provide the acidity properties (fixed acidity, volatile acidity, citric acid, pH), sulphides contents (free sulfur dioxide, total sulfur dioxide, sulphates), density related properties (residual sugar, alcohol, density), and salt content (chlorides). It also contains quality as the response variable. In order to improve classification analyses, we define a new variable, quality_factor. Any wine with a quality score less than six is classified as “below average”, a score of 6 is “average”, and above 6 is “above average”.
 
-## Who are we?
-At heart, we are Okanagan wine enthusiasts (but when we're not drinking wine we're graduate students at the University of British Columbia). 
-Our team includes Yuxuan, Eric, Rain, and Luka. Here's a little bit more about us:
-- *Yuxuan*:
-- *Eric*:
-- *Rain*:
-- *Luka*:
+![Vinho Verde Vineyard](https://blog.liebherr.com/appliances/us/wp-content/uploads/sites/3/2017/08/Vinho_Verde_Panther-753x493.jpg)
 
 ## A Fun Usage Scenario
 Alice is a winemaker in BC’s Okanagan Valley. She would like to create a new summer wine and hopes to take inspiration from the Vinho Verde wines, known for their refreshing qualities. Alice seeks our dashboard to better understand what wine attributes she should focus on to provide a tasting experience comparable to the very best Vinho Verde wines. However, there are some physicochemical properties she has little control over due to the soils and grape species available to her. Due to the above average alkalinity of Okanagan soil, she knows that her wines will typically be less acidic than true Vinho Verde wines, and the altitude means the chloride content will be lower as well. She wants to try to optimize the variables she has control over to make the best wine possible. She looks to our dashboard to see how Vinho Verde wines with higher pH and lower chloride content tend to fare. Looking at the interactive scatterplots, she sees that wines which have values within her possible ranges for these variables tend to be of very poor quality when they are also high in residual sugar, but less sweet wines are of good quality. She then consults the histograms and sees that there are not very many wines available that have these properties, so she knows that she will not have much direct competition should she go forward with this design. A few years later, she released this wine to broad critical acclaim and millions in profit.
 
-## App Sketch
-![App Sketch](app_sketch.png)
-
+## Who are we?
+At heart, we are Okanagan wine enthusiasts (but when we're not drinking wine we're graduate students at the University of British Columbia). 
+Our team includes Yuxuan, Eric, Rain, and Luka. ***Optional maybe? thoughts? --> Here's a little bit more about us:***
+- *Yuxuan:*
+- *Eric*:
+- *Rain*:
+- *Luka*:
 
 ## Get involved
 If you think you can help in any of the areas listed above (and we bet you can) or in any of the many areas that we haven't yet thought of (and here we're *sure* you can) then please check out our [contributors' guidelines](CONTRIBUTING.md) and our [roadmap](../../issues/1).
