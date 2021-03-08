@@ -36,11 +36,6 @@ values = [0, 1, 2]
 wine["quality_factor"] = np.select(conditions, values)
 # ---------------------
 
-<<<<<<< HEAD
-wine = pd.read_csv("wine_quality.csv")
-#---------------------
-=======
->>>>>>> Yuxuan
 
 def create_layout(app):
 

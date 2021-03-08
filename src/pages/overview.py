@@ -5,11 +5,6 @@ import altair as alt
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
-<<<<<<< HEAD
-
-from utils import Header, make_dash_table
-
-=======
 import altair as alt
 from utils import Header, make_dash_table
 import pathlib
@@ -46,7 +41,6 @@ corr_df_white["type"] = "white"
 
 corr_df_red = wine.loc[wine['type'] == 'red'].select_dtypes('number').corr('spearman').stack().reset_index(name='corr')
 corr_df_red["type"] = "red"
->>>>>>> Yuxuan
 
 # Bind them together
 corr_df = corr_df_white.append(corr_df_red)

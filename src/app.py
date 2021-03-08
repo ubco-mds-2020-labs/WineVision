@@ -1,22 +1,7 @@
 # -*- coding: utf-8 -*-
-import numpy as np
-import pandas as pd
-import altair as alt
-
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-<<<<<<< HEAD
-import dash_bootstrap_components as dbc
-
-from dash.dependencies import Input, Output
-from pages import (intergraph, overview, modelling)
-import utils
-#------------------
-# import data
-wine = pd.read_csv("wine_quality.csv")
-alt.data_transformers.enable('csv')
-=======
 import altair as alt
 from dash.dependencies import Input, Output
 from pages import (
@@ -38,7 +23,6 @@ wine = pd.read_csv("src/data/wine_quality.csv")
 
 # Allow large data set
 alt.data_transformers.enable('data_server')
->>>>>>> Yuxuan
 
 
 app = dash.Dash(
