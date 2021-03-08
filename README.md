@@ -12,11 +12,11 @@ Otherwise, this page is our homebase providing you information on the project.
 Navigate directly to a section of your choice or scroll down to find out more.
 
 * [What are we doing? (And why?)](#what-are-we-doing)
-* [Who are we?](#who-are-we)
 * [App Description](#app-description)
-* [Data Description](#description-of-the-data)
-* [A Fun Usage Scenario](#a-fun-usage-scenario)
 * [App Sketch](#app-sketch)
+* [The Data](#description-of-the-data)
+* [A Fun Usage Scenario](#a-fun-usage-scenario)
+* [So who are we?](#who-are-we)
 * [Want to get involved?](#get-involved)
 * [Get in touch](#contact-us)
 * [And thank you to our data source!](#data-citation)
