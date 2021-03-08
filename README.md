@@ -1,5 +1,5 @@
 # [Visit the **Wine Vision App**](https://wine-vision.herokuapp.com/)
-![](http://i.imgur.com/gallery/vbqEV)
+![GIF](https://media3.giphy.com/media/W1l4OnrJp7vPO/giphy.gif?cid=ecf05e47nhp1qec349d6hdfc051ay8xl8il3yppjzickbtrr&rid=giphy.gif)
 
 ## Description
 The Vinho Verde wine Dashboard has three tabs; Interactive Graphics, Explore the Dataset and Machine Learning.
