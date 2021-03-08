@@ -87,13 +87,13 @@ app.layout = dbc.Container([
     ]),
     dbc.Row([
     html.Iframe(
-        id = "histogram",
+        id = "densityplot",
         style={'border-width': '0', 'width': '1200px', 'height': '400px'}
     ),
     ]),
 
     dcc.Dropdown(
-            id = "histvalue",
+            id = "densvalue",
             options=[{"label": i, "value": i} for i in variables],
             value = "Chlorides (g/dm^3)",
             clearable = False)
@@ -151,28 +151,58 @@ def plot_scatter(xcol, ycol, qual, winetype):
     chart = (chart + regression)
     return chart.to_html()
 
+# Lukas density plot
+@app.callback(
+     Output('densityplot', 'srcDoc'),
+     Input('densvalue', 'value')
+)
+def plot_altair(xcol):
+        
+    chart = alt.Chart(wine
+            ).transform_density(
+                density=xcol,
+                groupby=['Wine', 'Quality Factor'],
+                as_=['value', 'density'],
+                steps=200, # bandwidth=5
+            ).mark_area(opacity=0.5).encode(
+                alt.X('value:Q', title=xcol, axis=alt.Axis(labels=True, grid=True)),
+                alt.Y('density:Q', title=None, axis=alt.Axis(labels=False, grid=False, ticks=False)),
+                alt.Color('Wine', scale=alt.Scale(range=['darkred', '#ff9581'])),
+                alt.Facet('Quality Factor:N', columns = 1)
+            ).properties(
+                height=200, width=400,
+                title = alt.TitleParams(
+                text='Wine Quality Factor Distributions', 
+                align='left', fontSize=14,
+                subtitle='Reds and Whites superimposed', subtitleFontSize=12)
+            ).configure_view(stroke=None).configure_headerFacet(title=None, labelAlign='right',labelAnchor='end',  labelFontWeight=600, labelFontSize=12
+            ).interactive()
+      
+    return chart.to_html()
+
+
 
 # Make Histogram
 
-@app.callback(
-    Output("histogram", "srcDoc"),
-    Input("quality", "value"),
-    Input("winetype", "value"),
-    Input("histvalue", "value")
-)
-def plot_histogram(qual, winetype, histvalue):
-    if qual in [0,1,2]:
-        subset = wine.loc[(wine["Quality Factor Numeric"] == qual) & (wine["Wine"].isin(winetype))]
-    else:
-        subset = wine.loc[wine["Wine"].isin(winetype)]
+# @app.callback(
+#     Output("histogram", "srcDoc"),
+#     Input("quality", "value"),
+#     Input("winetype", "value"),
+#     Input("histvalue", "value")
+# )
+# def plot_histogram(qual, winetype, histvalue):
+#     if qual in [0,1,2]:
+#         subset = wine.loc[(wine["Quality Factor Numeric"] == qual) & (wine["Wine"].isin(winetype))]
+#     else:
+#         subset = wine.loc[wine["Wine"].isin(winetype)]
 
-    chart = alt.Chart(subset).mark_bar().encode(
-        alt.X(histvalue, type = "quantitative", bin=alt.Bin(maxbins=30)),
-        alt.Y("count()"),
-        alt.Color("Wine", scale=alt.Scale(domain=['red', 'white'],
-                range=['darkred', 'blue']))
-    ).properties(height=300, width=1000)
-    return chart.to_html()
+#     chart = alt.Chart(subset).mark_bar().encode(
+#         alt.X(histvalue, type = "quantitative", bin=alt.Bin(maxbins=30)),
+#         alt.Y("count()"),
+#         alt.Color("Wine", scale=alt.Scale(domain=['red', 'white'],
+#                 range=['darkred', 'blue']))
+#     ).properties(height=300, width=1000)
+#     return chart.to_html()
 
 if __name__ == '__main__':
     app.run_server(debug=True)
