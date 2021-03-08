@@ -25,17 +25,16 @@ Navigate directly to a section of your choice or scroll down to find out more.
 
 ## What are we doing?
 ### The problem
-Wine making has always been a traditional practice passed down for many generations and studied extensively around the world. Yet, some of wine's secrets are still a mystery to most people, even wine producers! So how are we supposed to craft the perfect wine without knowing what makes it perfect?
+Wine making has always been a traditional practice passed down for many generations; yet, some of wine's secrets are still a mystery to most people, even wine producers! So how are we supposed to craft the perfect wine without knowing what makes it perfect (speaking from both a consumer and business perspective)?
 
-From a business perspective, there are 36 billion bottles of wine produced each year [1](https://www.winespectator.com/articles/how-many-bottles-of-wine-are-there-in-the-world-46410), and producers are constantly looking for ways to outperform the competition by creating the best wine they can. Physicochemical components are fundamental to a wine’s quality and those who understand this aspect of wine will have a greater edge into crafting an enjoyable and profitable product. 
+In general, wine quality evaluation is assessed by physicochemical tests and sensory analys. It's the roadmap to improving a wine. However the relationship between physicochemical structure and subjective quality is complex and no individual component can be used to accurately predict a wine’s quality. The interactions are as important as the components themselves. 
 
-![Wine chemistry](https://d2cbg94ubxgsnp.cloudfront.net/Pictures/480x270//9/2/5/139925_160412_PRS_AWRI_GAGO_0262.jpg)
+From a business perspective, producers are constantly looking for ways to outperform the competition by creating the best wine they can. Those who understand the fundamental physiochemical aspects of wine will have a greater edge into crafting an enjoyable and profitable product. So, we introduce to you the *Wine Vision Dashboard*.
 
 ### The solution
-Wine quality evaluation is the main part of the certification process to improve wine making. It is generally assessed by physicochemical tests and sensory analysis. The relationship between physicochemical structure and subjective quality is complex. No individual component can be used to accurately predict a wine’s quality, and interactions are as important as the components themselves. For example, perhaps higher alcohol content only improves a wine within a certain range of sulphate content, and wines outside this range are made worse by higher alcohol content. Trained wine tasting experts are able to reliably score wine on a scale ranging from 0 (very bad) to 10 (excellent), and those scores can be used to determine how these physicochemical properties affect quality. 
-
 **Our interactive dashboard will allow users to explore a number of physicochemical variables and how they interact to determine the subjective quality of a wine. Our visualizations will allow users to test and discover for themselves these relationships.** Wine producers, wine enthusiasts, and curious individuals can all make use of this dashboard.
 
+![Wine chemistry](https://d2cbg94ubxgsnp.cloudfront.net/Pictures/480x270//9/2/5/139925_160412_PRS_AWRI_GAGO_0262.jpg)
 
 ## App Description
 The Vinho Verde wine Dashboard has three tabs; Interactive Graphics, Explore the Dataset and Machine Learning.
