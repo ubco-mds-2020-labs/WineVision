@@ -1,3 +1,6 @@
+#import os
+#os.chdir('../../')
+
 import pandas as pd
 import numpy as np
 import altair as alt
@@ -8,7 +11,7 @@ import dash_core_components as dcc
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 
-from src.utils import Header, make_dash_table
+from utils import Header, make_dash_table # src.utils for heroku
 
 
 # Allow large data set

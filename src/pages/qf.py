@@ -1,3 +1,5 @@
+#import os
+#os.chdir('../../')
 
 import numpy as np
 import pandas as pd
@@ -8,7 +10,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
-from src.utils import Header, make_dash_table
+from utils import Header, make_dash_table # src.utils for heroku
 
 from altair_data_server import data_server # testing to fix NoSuchEntryPoint error
 alt.data_transformers.enable('data_server')

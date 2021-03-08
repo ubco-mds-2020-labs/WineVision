@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+#import os
+#import sys
+#print(os.getcwd())
+#sys.path.insert(0, '../src')
+#print(os.getcwd())
+
 import pandas as pd
 import numpy as np
 import altair as alt
@@ -9,7 +15,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 
-from src.pages import (
+from pages import ( #src.pages for heroku
     qf,
     overview,
     Wine_type

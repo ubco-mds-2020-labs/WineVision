@@ -1,3 +1,6 @@
+#import os
+#os.chdir('../../')
+
 import numpy as np
 import pandas as pd
 import altair as alt
@@ -7,7 +10,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
-from src.utils import Header, make_dash_table
+from utils import Header, make_dash_table # src.utils for heroku
 
 
 
