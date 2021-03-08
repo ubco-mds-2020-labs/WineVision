@@ -1,8 +1,6 @@
 # **Wine Vision App**
 ***Discover the physiochemical secrets to what makes a wine wonderful...***
 
-<img src="https://media0.giphy.com/media/3oz8xEXgWWnUXIQI4o/giphy.gif" width="500" height="400" />
-
 ## Welcome!
 :confetti_ball::balloon::confetti_ball: Hello and thank you for visiting the Wine Vision App! :confetti_ball::balloon::confetti_ball: 
 
