@@ -2,11 +2,13 @@
 import numpy as np
 import pandas as pd
 import altair as alt
+import pathlib
+
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
-import pathlib
-from utils import Header, make_dash_table
+
+from src.utils import Header, make_dash_table
 
 
 alt.data_transformers.enable('data_server')

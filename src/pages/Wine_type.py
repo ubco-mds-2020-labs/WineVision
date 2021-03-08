@@ -7,7 +7,7 @@ import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
-from utils import Header, make_dash_table
+from src.utils import Header, make_dash_table
 
 
 # Allow large data set

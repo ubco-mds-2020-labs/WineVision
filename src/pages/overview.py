@@ -1,15 +1,15 @@
 import numpy as np
 import pandas as pd
 import altair as alt
+import pathlib
 
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
-import altair as alt
-from utils import Header, make_dash_table
-import pathlib
-import pandas as pd
-import numpy as np
+
+from src.utils import Header, make_dash_table
+
+
 
 
 # Allow large data set
