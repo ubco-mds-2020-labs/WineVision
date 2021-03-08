@@ -7,10 +7,12 @@ import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
+
 from src.utils import Header, make_dash_table
 
 
 # Allow large data set
+from altair_data_server import data_server # testing to fix NoSuchEntryPoint error
 alt.data_transformers.enable('data_server')
 
 # Get data

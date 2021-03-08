@@ -13,6 +13,7 @@ from src.utils import Header, make_dash_table
 
 
 # Allow large data set
+from altair_data_server import data_server # testing to fix NoSuchEntryPoint error
 alt.data_transformers.enable('data_server')
 
 # Get data

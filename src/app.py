@@ -1,22 +1,23 @@
 # -*- coding: utf-8 -*-
+import pandas as pd
+import numpy as np
+import altair as alt
+
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
-import altair as alt
 from dash.dependencies import Input, Output
+import dash_bootstrap_components as dbc
+
 from src.pages import (
     qf,
     overview,
     Wine_type
 )
-import dash_bootstrap_components as dbc
-import pandas as pd
-import numpy as np
 
 #------------------------------------------------------
 # Get data
 wine = pd.read_csv("data/processed/wine_quality.csv")
-
 corr_df = pd.read_csv("data/processed/correlation.csv")
 
 # Get a list of unique column names
@@ -27,6 +28,7 @@ variables = np.delete(variables, np.argwhere(variables == "Quality Factor Numeri
 # -------------------------eric data cleaning#------------------------------------------------------------------------------------------------
 
 # Allow large data set
+from altair_data_server import data_server # testing to fix NoSuchEntryPoint error
 alt.data_transformers.enable('data_server')
 
 

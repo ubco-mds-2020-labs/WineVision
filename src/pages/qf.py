@@ -10,7 +10,7 @@ import dash_bootstrap_components as dbc
 
 from src.utils import Header, make_dash_table
 
-
+from altair_data_server import data_server # testing to fix NoSuchEntryPoint error
 alt.data_transformers.enable('data_server')
 
 wine = pd.read_csv("data/processed/wine_quality.csv")
