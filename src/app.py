@@ -58,10 +58,10 @@ app.layout = html.Div(
 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
-    if pathname == '/WineVison/src/qf':
+    if pathname == '/WineVision/src/qf':
         return qf.create_layout(app)
 
-    elif pathname == "/WineVison/src/Wine_type":
+    elif pathname == "/WineVision/src/Wine_type":
         return Wine_type.create_layout(app)
 
     elif pathname == "/WineVision/src/full-view":
