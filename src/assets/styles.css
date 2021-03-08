@@ -74,7 +74,7 @@ p {
 
 h6.padded,
 p.padded {
-  padding: 2px 5px;
+  padding: 3px 5px;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -106,7 +106,7 @@ table.reversed tr:nth-child(even) {
 }
 
 table {
-  font-size: 1rem;
+  font-size:21rem;
   border-spacing: 0;
   border-collapse: collapse;
 }
@@ -125,7 +125,7 @@ table.tiny-header tr:first-child {
 }
 
 .row > .columns:not(:first-child) {
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 h1,
@@ -137,11 +137,11 @@ h5 {
   font-size: 2.6rem;
 }
 h6 {
-  font-size: 1.425rem;
+  font-size: 1.825rem;
 }
 
 .risk-reward {
-  height: 150px;
+  height: 120px;
   width: auto;
 }
 
@@ -152,9 +152,9 @@ li {
 }
 
 .product {
-  position: relative;
+  position:auto;
   height: 15%;
-  padding: 50px;
+  padding: 30px;
   margin-bottom: 25px;
   border-radius: 1px;
   background: #98151b;
@@ -173,7 +173,7 @@ li {
 }
 .all-tabs {
   text-align: center;
-  font-size: 19px;
+  font-size: 23px;
   margin-top: 10px;
 }
 .main-title {
@@ -245,7 +245,7 @@ a:active {
 .rowrow {
   margin: auto;
   text-align: center;
-  width: 100%;
+  width: 97%;
 }
 
 .rowrow2 {
@@ -259,7 +259,7 @@ a:active {
   border-bottom-style: none;
   border-top-style: none;
   color: black;
-  padding: 6px 20px;
+  padding: 15px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
