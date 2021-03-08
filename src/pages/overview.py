@@ -51,11 +51,12 @@ def create_layout(app):
             html.Div(
                 [  # Row 3
                     html.Div(
+
                         [html.H3('Motivation'),
-                            html.Br([]),
+                            # html.Br([]),
                             html.H6(
                                 "\
-                                Wine is a multi billion dollar global industry. \
+                                    Wine is a multi billion dollar global industry. \
                                 With 36 billion bottles of wine produced each year 1,producers are constantly looking for ways to outperform \
                                 the competition and create the best wines they can. \
                                 Portugal in particular is second in the world for per-capita wine \
