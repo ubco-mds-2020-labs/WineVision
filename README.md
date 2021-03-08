@@ -1,9 +1,10 @@
 # **Wine Vision App**
 ***Discover the physiochemical secrets to what makes a wine wonderful...***
 
+<img src="https://media0.giphy.com/media/3oz8xEXgWWnUXIQI4o/giphy.gif" width="500" height="400" />
+
 ## Welcome!
 :confetti_ball::balloon::confetti_ball: Hello and thank you for visiting the Wine Vision App! :confetti_ball::balloon::confetti_ball: 
-<img src="https://media0.giphy.com/media/3oz8xEXgWWnUXIQI4o/giphy.gif" width="50" height="50" />
 
 This page is our homebase to provide you with some information on the project. Navigate directly to a section of your choice or scroll down to find out more.
 
@@ -56,6 +57,6 @@ Please note that it's very important to us that we maintain a positive and suppo
 If you want to report a problem or suggest an enhancement we'd love for you to [open an issue](../../issues) at this github repository because then we can get right on it.
 
 ## Data Citation
-- Paulo Cortez, University of Minho, Guimarães, Portugal, http://www3.dsi.uminho.pt/pcortez
+Paulo Cortez, University of Minho, Guimarães, Portugal, http://www3.dsi.uminho.pt/pcortez
 A. Cerdeira, F. Almeida, T. Matos and J. Reis, Viticulture Commission of the Vinho Verde Region(CVRVV), Porto, Portugal
 @2009
