@@ -1,5 +1,6 @@
 # **Wine Vision App**
 ***Discover the physiochemical secrets to what makes a wine wonderful...***
+
 ![Logo](src/assets/logo.png)
 
 ## Welcome!
