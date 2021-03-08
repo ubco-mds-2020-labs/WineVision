@@ -1,107 +1,147 @@
+# -*- coding: utf-8 -*-
+#import os
+#import sys
+#print(os.getcwd())
+#sys.path.insert(0, '../src')
+#print(os.getcwd())
+
 import pandas as pd
 import numpy as np
 import altair as alt
 
 import dash
-import dash_html_components as html
 import dash_core_components as dcc
+import dash_html_components as html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 
-# Allow large data set
-alt.data_transformers.enable('data_server')
+from pages import ( #src.pages for heroku
+    qf,
+    overview,
+    Wine_type
+)
 
+#------------------------------------------------------
 # Get data
-wine = pd.read_csv("/data/processed/wine_quality.csv")
-
-corr_df = pd.read_csv("/data/processed/correlation.csv")
+wine = pd.read_csv("data/processed/wine_quality.csv")
+corr_df = pd.read_csv("data/processed/correlation.csv")
 
 # Get a list of unique column names
 variables = corr_df["level_0"].unique()
 variables = np.delete(variables, np.argwhere(variables == "Quality Factor"))
 variables = np.delete(variables, np.argwhere(variables == "Quality Factor Numeric")) #Don't want this as an option in scatterplot
 
-# Setup app
+# -------------------------eric data cleaning#------------------------------------------------------------------------------------------------
 
-app = dash.Dash(external_stylesheets=[dbc.themes.BOOTSTRAP])
+# Allow large data set
+from altair_data_server import data_server # testing to fix NoSuchEntryPoint error
+alt.data_transformers.enable('data_server')
 
-app.layout = dbc.Container([
-    dbc.Row([
-        dbc.Col([
-            html.Iframe(
-                id = "matrix",
-                style={'border-width': '0', 'width': '500px', 'height': '500px'}),
 
-            html.H5("Wine Type"),
+app = dash.Dash(
+    __name__, meta_tags=[
+        {"name": "viewport", "content": "width=device-width"}],
+    external_stylesheets=[
+        "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap-grid.min.css"]
+    # external_stylesheets=[dbc.themes.BOOTSTRAP],
+)
+server = app.server
 
-            dcc.Checklist(
-                id = "winetype",
-                options = [
-                    {"label": "White Wines", "value": "white"},
-                    {"label": "Red Wines", "value": "red"}
-                ],
-                value = ["red", "white"],
-                labelStyle={"display": "inline-block"}
-            ),
 
-            html.H5("Quality"),
+# Describe the layout/ UI of the app
+app.layout = html.Div(
+    [dcc.Location(id="url", refresh=False), html.Div(id="page-content")]
+)
 
-            dcc.Slider(
-                id = "quality",
-                min=0,
-                max=3,
-                step=1,
-                value = 1,
-                marks={
-                    0: "below average",
-                    1: "average",
-                    2: "above average",
-                    3: "any"
-                }
-            )
+# Update page
 
-        ]),
-        dbc.Col([
-            html.Iframe(
-                id = "scatter",
-                style={'border-width': '0', 'width': '500px', 'height': '500px'}),
-                
-            html.H5("x-axis:"),
 
-            dcc.Dropdown(
-                id = "x-axis",
-                options=[{"label": i, "value": i} for i in variables],
-                value = "Alcohol (%)",
-                clearable = False
-                ),
+@app.callback(Output("page-content", "children"), [Input("url", "pathname")])
+def display_page(pathname):
+    if pathname == '/WineVision/src/qf':
+        return qf.create_layout(app)
 
-            html.H5("y-axis"),
+    elif pathname == "/WineVision/src/Wine_type":
+        return Wine_type.create_layout(app)
 
-            dcc.Dropdown(
-                id = "y-axis",
-                options=[{"label": i, "value": i} for i in variables],
-                value = "Chlorides (g/dm^3)",
-                clearable = False),
-     
-        ])
-    ]),
-    dbc.Row([
-    html.Iframe(
-        id = "densityplot",
-        style={'border-width': '0', 'width': '1200px', 'height': '400px'}
-    ),
-    ]),
+    elif pathname == "/WineVision/src/full-view":
+        return (
+            overview.create_layout(app),
+            qf.create_layout(app),
+            Wine_type.create_layout(app)
+        )
 
-    dcc.Dropdown(
-            id = "densvalue",
-            options=[{"label": i, "value": i} for i in variables],
-            value = "Chlorides (g/dm^3)",
-            clearable = False),
+    else:
+        return overview.create_layout(app)
+    
 
-    dbc.Row([html.H5("\t Density Plot Variable")])
+#------------------------------------------------------------------------------------------------
 
-])
+#------------------------------------------------------------------------------------------------
+# Rain
 
+
+
+# Set up callbacks/backend
+@app.callback(
+     Output('scatter_1','srcDoc'),
+     Input('xcol-widget', 'value'),
+     Input('ycol-widget', 'value'),
+     Input("winetype", "value")
+     )
+
+def plot_scatter(xcol,ycol, winetype):
+
+    wine_dif = wine.loc[(wine['Wine'].isin(winetype))]
+
+    brush = alt.selection_interval()
+    click = alt.selection_multi(fields=['Wine'], bind='legend')
+
+    base = alt.Chart(wine_dif).properties(
+    width=400,
+    height=400
+    ).add_selection(brush)
+
+    points = base.mark_point().encode(
+    x = alt.X(xcol, scale=alt.Scale(zero=False)),
+    y = alt.Y(ycol, scale=alt.Scale(zero=False)),
+    color=alt.condition(brush, 'Quality Factor:N', alt.value('lightgray')),
+    opacity=alt.condition(click, alt.value(0.9), alt.value(0.2))
+    )
+    
+    bars = alt.Chart(wine_dif, title="Percentage of Each Quality Factor").transform_joinaggregate(
+    total='count(*)'
+    ).transform_calculate(
+    pct='1 / datum.total'
+    ).mark_bar().encode(
+    alt.X('sum(pct):Q', axis=alt.Axis(format='%')),
+    alt.Y('Quality Factor:N'),
+    color = 'Quality Factor:N',
+    tooltip = 'count(Quality Factor):Q'
+    ).transform_filter(brush)
+
+    hists = base.mark_bar(opacity=0.5, thickness=100).encode(
+    x=alt.X('Quality',
+            bin=alt.Bin(step=1), # step keeps bin size the same
+            scale=alt.Scale(zero=False)),
+    y=alt.Y('count()',
+            stack=None),
+    color=alt.Color('Quality Factor:N'),
+    tooltip = 'count(Quality):Q'
+    ).transform_filter(brush)
+    
+    chart = (points & bars | hists).add_selection(click)
+    return chart.to_html()
+
+
+
+
+
+#------------------------------------------------------------------------------------------------
+
+
+
+# ------------eric-------------------------------------------------------------------------------
 # Matrix plot. I couldn't figure out how to make it work at the bottom without a callback input
 @app.callback(
     Output("matrix", "srcDoc"),
@@ -186,31 +226,5 @@ def plot_density(qual, winetype, xcol):
     return chart.to_html()
 
 
-
-# Make Histogram - cut in favor of density plot
-
-# @app.callback(
-#     Output("densityplot", "srcDoc"),
-#     Input("quality", "value"),
-#     Input("winetype", "value"),
-#     Input("densvalue", "value")
-# )
-# def plot_density(qual, winetype, densvalue):
-#     if qual in [0,1,2]:
-#         subset = wine.loc[(wine["Quality Factor Numeric"] == qual) & (wine["Wine"].isin(winetype))]
-#     else:
-#         subset = wine.loc[wine["Wine"].isin(winetype)]
-
-#     chart = alt.Chart(subset).transform_density().encode(
-#         alt.X(histvalue, type = "quantitative", bin=alt.Bin(maxbins=30)),
-#         alt.Y("count()"),
-#         alt.Color("Wine", scale=alt.Scale(domain=['red', 'white'],
-#                 range=['darkred', 'blue']))
-#     ).properties(height=300, width=1000)
-#     return chart.to_html()
-
-
-
 if __name__ == '__main__':
-    app.run_server(debug=True)
-
+    app.run_server(debug=True, dev_tools_ui=False, dev_tools_props_check=False)

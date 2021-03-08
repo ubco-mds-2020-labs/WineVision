@@ -1,1 +1,0 @@
-wine = pd.read_csv("data/processed/wine_quality.csv")
