@@ -24,7 +24,7 @@ def create_layout(app):
              dbc.Row([
                  dbc.Col([
                      dbc.Card(
-                         dbc.CardBody(html.H5('Wine Type')),
+                         dbc.CardBody(html.H4('Wine Type')),
                          color='warning', inverse=True),
 
                      dcc.Checklist(
@@ -42,7 +42,7 @@ def create_layout(app):
                  ]),
 
                  dbc.Col([
-                     html.H5('Select your variables:'),
+                     html.H4('Select your variables:'),
 
                      html.H5('X-axis'),
 
