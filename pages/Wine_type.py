@@ -1,5 +1,5 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
 import altair as alt
 
 import dash
@@ -16,20 +16,18 @@ alt.data_transformers.disable_max_rows()
 
 # Get data
 wine = pd.read_csv("data/processed/wine_quality.csv")
-
 corr_df = pd.read_csv("data/processed/correlation.csv")
 
 
 # Get a list of unique column names
 variables = corr_df["level_0"].unique()
 variables = np.delete(variables, np.argwhere(variables == "Quality Factor"))
+
 # Don't want this as an option in scatterplot
 variables = np.delete(variables, np.argwhere(
     variables == "Quality Factor Numeric"))
 
 # Setup app
-
-
 def create_layout(app):
     # Page layouts
     return html.Div(

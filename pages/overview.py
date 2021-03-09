@@ -9,9 +9,7 @@ import dash_bootstrap_components as dbc
 
 from utils import Header, make_dash_table
 
-
 # Allow large data set
-
 alt.data_transformers.disable_max_rows()
 
 # Get data
