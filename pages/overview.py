@@ -6,14 +6,10 @@ import pathlib
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
-# from altair_data_server import data_server
 
 from utils import Header, make_dash_table
 
-
 # Allow large data set
-
-# alt.data_transformers.enable('data_server')
 alt.data_transformers.disable_max_rows()
 
 # Get data

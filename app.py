@@ -7,11 +7,10 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
-# from altair_data_server import data_server
 
 from pages import ( 
     Quality_factors,
-    overview,
+    Overview,
     Wine_type,
 )
 
@@ -20,7 +19,6 @@ from pages import (
 wine = pd.read_csv("data/processed/wine_quality.csv")
 corr_df = pd.read_csv("data/processed/correlation.csv")
 
-# wine = pd.concat([wine.loc[wine["Wine"] == "red"], wine.loc[wine["Wine"] == "white"].sample(3300)])
 
 # Get a list of unique column names
 variables = corr_df["level_0"].unique()
@@ -29,8 +27,6 @@ variables = np.delete(variables, np.argwhere(variables == "Quality Factor Numeri
 
 
 # Allow large data set
-# from altair_data_server import data_server 
-# alt.data_transformers.enable('data_server')
 alt.data_transformers.disable_max_rows()
 
 app = dash.Dash(
@@ -38,8 +34,8 @@ app = dash.Dash(
         {"name": "viewport", "content": "width=device-width"}],
     external_stylesheets=[
         "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap-grid.min.css"]
-    # external_stylesheets=[dbc.themes.BOOTSTRAP],
 )
+
 server = app.server
 
 # Describe the layout/ UI of the app
@@ -51,13 +47,13 @@ app.layout = html.Div(
 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
-    if pathname == '/WineVison/src/qf':
+    if pathname == '/WineVision/Quality-Factors':
         return Quality_factors.create_layout(app)
 
-    elif pathname == "/WineVison/src/Wine_type":
+    elif pathname == "/WineVision/Wine-Types":
         return Wine_type.create_layout(app)
 
-    elif pathname == "/WineVision/src/full-view":
+    elif pathname == "/WineVision/Full-View":
         return (
             overview.create_layout(app),
             Quality_factors.create_layout(app),
