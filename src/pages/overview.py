@@ -1,5 +1,5 @@
 #import os
-#os.chdir('../../')
+# os.chdir('../../')
 
 import numpy as np
 import pandas as pd
@@ -10,13 +10,12 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
-from utils import Header, make_dash_table # src.utils for heroku
-
-
+from utils import Header, make_dash_table  # src.utils for heroku
 
 
 # Allow large data set
-from altair_data_server import data_server # testing to fix NoSuchEntryPoint error
+# testing to fix NoSuchEntryPoint error
+from altair_data_server import data_server
 alt.data_transformers.enable('data_server')
 
 # Get data
@@ -49,8 +48,10 @@ def plot_matrix():
 
 def create_layout(app):
     # Page layouts
-    return html.Div(
-        [ html.Div([Header(app)]),
+    layout = html.Div(
+        [html.Div([Header(app)]),
+
+
             # page 1
             html.Div(
                 [  # Row 3
@@ -84,10 +85,23 @@ def create_layout(app):
                         ),
                         ],
                         className="product"
-                    )
+                    ),
+
+
 
                 ],
-            className="twelve columns")
+
+            className="twelve columns"),
+         dcc.Markdown('''
+
+# This is an <h1> tag
+
+## This is an <h2> tag
+
+###### This is an <h6> tag
+'''),
+
 
          ]
     )
+    return layout
