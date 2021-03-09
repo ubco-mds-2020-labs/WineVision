@@ -3,7 +3,6 @@
 
 *You can visit the app directly by clicking here* &rarr; &rarr; &rarr; [***Wine Vision***](https://wine-vision.herokuapp.com/)
 
-![insert app screenshot here :)]()
 
 ## Welcome!
 :confetti_ball::balloon::confetti_ball::balloon: Hello and thank you for stopping by the [Wine Vision App](https://wine-vision.herokuapp.com/)! :confetti_ball::balloon::confetti_ball::balloon:
@@ -68,11 +67,6 @@ Alice is a winemaker in BC’s Okanagan Valley. She would like to create a new s
 
 ## Who are we?
 At heart, we are Okanagan wine enthusiasts (but when we're not drinking wine we're graduate students at the University of British Columbia). 
-Our team includes Yuxuan, Eric, Rain, and Luka. ***Optional maybe? thoughts? --> Here's a little bit more about us:***
-- *Yuxuan:*
-- *Eric*:
-- *Rain*:
-- *Luka*:
 
 ## Get involved
 If you think you can help in any of the areas listed above (and we bet you can) or in any of the many areas that we haven't yet thought of (and here we're *sure* you can) then please check out our [contributors' guidelines](CONTRIBUTING.md) and our [roadmap](../../issues/1).
