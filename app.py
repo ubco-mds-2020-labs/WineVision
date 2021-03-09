@@ -10,7 +10,7 @@ import dash_bootstrap_components as dbc
 
 from pages import (
     Quality_factors,
-    overview,
+    Overview,
     Wine_type,
 )
 
