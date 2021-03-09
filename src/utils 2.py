@@ -23,7 +23,7 @@ def get_header(app):
                     ),
                     html.Div(
                         [dcc.Link(
-                                "Full view",
+                                "Full View",
                                 href="/WineVison/src/full-view",
                                 className="full-view-link",
                             )
@@ -48,13 +48,13 @@ def get_menu():
                 className="tab first",
             ),
             dcc.Link(
-                "Wine Type Comparison",
-                href="/WineVison/src/Wine_type",
+                "Interactive Graphics",
+                href="/WineVison/src/intergraph",
                 className="tab",
             ),
             dcc.Link(
-                "Quality Factors",
-                href="/WineVison/src/qf",
+                "Machine Learning",
+                href="/WineVison/src/modelling",
                 className="tab",
             ),
         ],

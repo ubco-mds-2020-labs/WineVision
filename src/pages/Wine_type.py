@@ -4,16 +4,18 @@
 import pandas as pd
 import numpy as np
 import altair as alt
-
+import pathlib
 import dash
 import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 
-from src.utils import Header, make_dash_table # src.utils for heroku
+from utils import Header, make_dash_table # src.utils for heroku
 
-
+PATH = pathlib.Path(__file__).parent
+print(PATH)
+DATA_PATH = PATH.joinpath("../processed").resolve()
 # Allow large data set
 from altair_data_server import data_server # testing to fix NoSuchEntryPoint error
 alt.data_transformers.enable('data_server')

@@ -8,14 +8,20 @@
 import pandas as pd
 import numpy as np
 import altair as alt
+import pathlib
 
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
+# get relative data folder
 
-from src.pages import ( #src.pages for heroku
+PATH = pathlib.Path(__file__).parent
+print(PATH)
+DATA_PATH = PATH.joinpath("../processed").resolve()
+
+from pages import (
     qf,
     overview,
     Wine_type
@@ -23,8 +29,8 @@ from src.pages import ( #src.pages for heroku
 
 #------------------------------------------------------
 # Get data
-wine = pd.read_csv("data/processed/wine_quality.csv")
-corr_df = pd.read_csv("data/processed/correlation.csv")
+wine = pd.read_csv("wine_quality.csv")
+corr_df = pd.read_csv("correlation.csv")
 
 # Get a list of unique column names
 variables = corr_df["level_0"].unique()
@@ -57,17 +63,18 @@ app.layout = html.Div(
 
 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
+
 def display_page(pathname):
-    if pathname == '/WineVision/src/qf':
+    if pathname == '/WineVison/src/qf':
         return qf.create_layout(app)
 
-    elif pathname == "/WineVision/src/Wine_type":
+    elif pathname == "/WineVison/src/Wine_type":
         return Wine_type.create_layout(app)
 
-    elif pathname == "/WineVision/src/full-view":
+    elif pathname == "/WineVison/src/full-view":
         return (
-            overview.create_layout(app),
             qf.create_layout(app),
+            overview.create_layout(app),
             Wine_type.create_layout(app)
         )
 

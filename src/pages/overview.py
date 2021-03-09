@@ -10,7 +10,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
-from src.utils import Header, make_dash_table # src.utils for heroku
+from utils import Header, make_dash_table # src.utils for heroku
 
 
 
@@ -50,7 +50,7 @@ def plot_matrix():
 def create_layout(app):
     # Page layouts
     return html.Div(
-        [Header(app),
+        [ html.Div([Header(app)]),
             # page 1
             html.Div(
                 [  # Row 3
