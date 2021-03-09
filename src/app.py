@@ -27,8 +27,8 @@ from pages import (
 
 #------------------------------------------------------
 # Get data
-wine = pd.read_csv("wine_quality.csv")
-corr_df = pd.read_csv("correlation.csv")
+wine = pd.read_csv("data/processed/wine_quality.csv")
+corr_df = pd.read_csv("data/processed/correlation.csv")
 
 # Get a list of unique column names
 variables = corr_df["level_0"].unique()
@@ -193,7 +193,7 @@ def plot_scatter(xcol, ycol, qual, winetype):
                 range=['darkred', 'blue']))
     ).properties(height=350, width=330)
     regression = chart.transform_regression(xcol,ycol, groupby = ["Wine"],
-                                        # By default lines don't go beyond data and are hard to read in this dense dataset
+                                        # By default lines dosn't go beyond data and are hard to read in this dense dataset
                                        extent = [min(wine[xcol]) - 1, max(wine[xcol]) + 1]).mark_line(size = 5)
     chart = (chart + regression)
     return chart.to_html()
