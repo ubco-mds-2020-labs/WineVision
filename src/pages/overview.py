@@ -102,9 +102,9 @@ Navigate directly to a section of your choice or scroll down to find out more.
 
 
 * [Describing the App]\n (/app-description)
-* [Describing the Data](#the-data)
-* [A Fun Usage Scenario](#a-fun-usage-scenario)
-* [So who are we?](#who-are-we)
+* [Describing the Data]\n (/the-data)
+* [A Fun Usage Scenario]\n (#a-fun-usage-scenario)
+* [So who are we?]\n (#who-are-we)
 * [Want to get involved?](#get-involved)
 * [Get in touch](#contact-us)
 * [And thank you to our data source!](#data-citation)

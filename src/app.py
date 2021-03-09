@@ -71,9 +71,9 @@ def display_page(pathname):
 
     elif pathname == "/WineVison/src/full-view":
         return (
-            qf.create_layout(app),
             overview.create_layout(app),
-            Wine_type.create_layout(app)
+            Wine_type.create_layout(app),
+            qf.create_layout_full_view(app)
         )
 
     else:
