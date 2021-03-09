@@ -1,4 +1,4 @@
-# **Wine Vision App** <img src="src/assets/logo.png" width="85" height="45" /> 
+# **Wine Vision App** <img src="assets/logo.png" width="85" height="45" /> 
 ***Discover the physiochemical secrets to what makes a wine wonderful...***
 
 *You can visit the app directly by clicking here* &rarr; &rarr; &rarr; [***Wine Vision***](https://wine-vision.herokuapp.com/)
@@ -34,7 +34,7 @@ From a business perspective, producers are constantly looking for ways to outper
 ### The solution
 **Our interactive dashboard will allow users to explore a number of physicochemical variables and how they interact to determine the subjective quality of a wine. Our visualizations will allow users to test and discover for themselves these relationships.** Wine producers, wine enthusiasts, and curious individuals can all make use of this dashboard.
 
-![Wine chemistry](https://d2cbg94ubxgsnp.cloudfront.net/Pictures/480x270//9/2/5/139925_160412_PRS_AWRI_GAGO_0262.jpg)
+<img src="https://d2cbg94ubxgsnp.cloudfront.net/Pictures/480x270//9/2/5/139925_160412_PRS_AWRI_GAGO_0262.jpg" width="550" height="350" /> 
 
 ## App Description
 The Vinho Verde wine Dashboard has three tabs; Interactive Graphics, Explore the Dataset and Machine Learning.

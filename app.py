@@ -29,7 +29,6 @@ variables = np.delete(variables, np.argwhere(
 
 
 # Allow large data set
-
 alt.data_transformers.disable_max_rows()
 
 app = dash.Dash(
@@ -37,8 +36,8 @@ app = dash.Dash(
         {"name": "viewport", "content": "width=device-width"}],
     external_stylesheets=[
         "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap-grid.min.css"]
-    # external_stylesheets=[dbc.themes.BOOTSTRAP],
 )
+
 server = app.server
 
 # Describe the layout/ UI of the app
@@ -51,13 +50,13 @@ app.layout = html.Div(
 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
 def display_page(pathname):
-    if pathname == '/WineVison/src/qf':
+    if pathname == '/WineVision/Quality-Factors':
         return Quality_factors.create_layout(app)
 
-    elif pathname == "/WineVison/src/Wine_type":
+    elif pathname == "/WineVision/Wine-Types":
         return Wine_type.create_layout(app)
 
-    elif pathname == "/WineVision/src/full-view":
+    elif pathname == "/WineVision/Full-View":
         return (
             overview.create_layout(app),
             Quality_factors.create_layout(app),
@@ -65,7 +64,8 @@ def display_page(pathname):
         )
 
     else:
-        return overview.create_layout(app)
+        return Overview.create_layout(app)
+    
 
 
 # ------------------------------------------------------------------------------------------------
