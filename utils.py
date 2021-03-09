@@ -55,7 +55,7 @@ def get_menu():
             dcc.Link(
                 "Quality Factors",
                 href="/WineVision/Quality-Factors",
-                className="tab",
+                className="tab ",
             ),
         ],
         className="row all-tabs",
