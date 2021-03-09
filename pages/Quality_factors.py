@@ -20,70 +20,67 @@ def create_layout(app):
         Header(app),
         dbc.Container([
             #  html.H1('Various Features in Different Quality Factors'),
-            dbc.Row([
-                dbc.Col([
-                    html.Div(
-                        dbc.Card(
-                            dbc.CardBody(html.H5('Wine Type')),
-                            color='warning', inverse=True)),
+             dbc.Row([
+                 dbc.Col([
+                     dbc.Card(
+                         dbc.CardBody(html.H4('Wine Type')),
+                         color='warning', inverse=True),
 
-                    dcc.Checklist(
-                        id="winetype",
-                        options=[
-                            {"label": "White Wine", "value": "white"},
-                            {"label": "Red Wine", "value": "red"}
-                        ],
-                        value=["red", "white"],
-                        labelStyle={"display": "block"}
-                    ),
+                     dcc.Checklist(
+                         id="winetype",
+                         options=[
+                             {"label": "White Wine", "value": "white"},
+                             {"label": "Red Wine", "value": "red"}
+                         ],
+                         value=["red", "white"],
+                         labelStyle={"display": "block"}
+                     ),
 
-                    html.H4('Interactive Plots'),
-                    html.H5(
-                        'Drag your mouse to choose the range you want to explore!')
-                ]),
+                     html.H4('Interactive Plots'),
+                     html.H6('Drag your mouse to choose the range you want to explore!')
+                 ]),
 
-                dbc.Col([
-                    html.H5('Select your variables:'),
+                 dbc.Col([
+                     html.H4('Select your variables:'),
 
-                    html.H5('X-axis'),
+                     html.H5('X-axis'),
 
-                    # dcc.Dropdown(
-                    #     id = "type-widget",
-                    #     options=[
-                    #         {'label': 'White', 'value': 'white'},
-                    #         {'label': 'Red', 'value': 'red'}],
-                    #     value='white', placeholder = "Select Wine Type"),
-                    dcc.Dropdown(
-                        id='xcol-widget',
-                        value='pH',
-                        options=[{'label': col, 'value': col}
-                                 for col in wine.columns],
-                        clearable=False
-                    ),
+                     # dcc.Dropdown(
+                     #     id = "type-widget",
+                     #     options=[
+                     #         {'label': 'White', 'value': 'white'},
+                     #         {'label': 'Red', 'value': 'red'}],
+                     #     value='white', placeholder = "Select Wine Type"),
+                     dcc.Dropdown(
+                         id='xcol-widget',
+                         value='pH',
+                         options=[{'label': col, 'value': col}
+                                  for col in wine.columns],
+                         clearable=False
+                     ),
 
-                    html.H5("Y-axis"),
+                     html.H5("Y-axis"),
 
-                    dcc.Dropdown(
-                        id='ycol-widget',
-                        value='pH',
-                        options=[{'label': col, 'value': col}
-                                 for col in wine.columns],
-                        clearable=False
-                    ),
-                ]),
+                     dcc.Dropdown(
+                         id='ycol-widget',
+                         value='pH',
+                         options=[{'label': col, 'value': col}
+                                  for col in wine.columns],
+                         clearable=False
+                     ),
+                 ]),
 
-                html.Iframe(
-                    id="scatter_1",
-                    # srcDoc = plot_scatter(),
-                    style={'border-width': '0',
-                           'width': '1200px', 'height': '700px'}
-                )
-                # style={'border-width': '0', 'width': '120%', 'height': '700px'})
+                 html.Iframe(
+                     id="scatter_1",
+                     # srcDoc = plot_scatter(),
+                     style={'border-width': '0', 'width': '120%', 'height': '700px'})
 
-            ])
-        ])
-    ])
+             ])
+         ])
 
+         ]
+    )
+   
 
 def create_layout_fullview(app):
     return html.Div([
