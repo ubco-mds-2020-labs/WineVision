@@ -99,14 +99,15 @@ def create_layout(app):
     ),
     ]),
 
+    dbc.Row([html.H5("\t Density Plot Variable")]),
+
     dcc.Dropdown(
             id = "densvalue",
             options=[{"label": i, "value": i} for i in variables],
             value = "Chlorides (g/dm^3)",
-            clearable = False),
+            clearable = False)
 
-    dbc.Row([html.H5("\t Density Plot Variable")])
-
+    
 ])
 
 

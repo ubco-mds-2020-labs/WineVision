@@ -55,16 +55,15 @@ def display_page(pathname):
 
     elif pathname == "/WineVision/Full-View":
         return (
-            overview.create_layout(app),
+            Overview.create_layout(app),
             Quality_factors.create_layout(app),
             Wine_type.create_layout(app)
         )
 
     else:
-        return overview.create_layout(app)
+        return Overview.create_layout(app)
     
 
-#------------------------------------------------------------------------------------------------
 
 #------------------------------------------------------------------------------------------------
 # Rain

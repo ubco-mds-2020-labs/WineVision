@@ -17,7 +17,6 @@ wine = pd.read_csv("data/processed/wine_quality.csv")
 
 corr_df = pd.read_csv("data/processed/correlation.csv")
 
-# wine = pd.concat([wine.loc[wine["Wine"] == "red"], wine.loc[wine["Wine"] == "white"].sample(3300)])
 
 # Get a list of unique column names
 variables = corr_df["level_0"].unique()
