@@ -51,6 +51,8 @@ app = dash.Dash(
 )
 server = app.server
 
+app.config['suppress_callback_exceptions'] = True
+
 
 # Describe the layout/ UI of the app
 app.layout = html.Div(
