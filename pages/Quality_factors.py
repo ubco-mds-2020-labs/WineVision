@@ -38,7 +38,7 @@ def create_layout(app):
                      ),
 
                      html.H4('Interactive Plots'),
-                     html.H5('Drag your mouse to choose the range you want to explore!')
+                     html.H6('Drag your mouse to choose the range you want to explore!')
                  ]),
 
                  dbc.Col([
