@@ -1,9 +1,9 @@
 numpy
 pandas
 altair
-altair_data_server
 dash==1.19.0
 dash_bootstrap_components
 plotly==4.14.3
 gunicorn
+altair_data_server
 vega-datasets
