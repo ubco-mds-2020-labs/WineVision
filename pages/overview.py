@@ -1,6 +1,3 @@
-#import os
-# os.chdir('../../')
-
 import numpy as np
 import pandas as pd
 import altair as alt
@@ -9,19 +6,22 @@ import pathlib
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
+# from altair_data_server import data_server
 
-from utils import Header, make_dash_table  # src.utils for heroku
+from utils import Header, make_dash_table
 
 
 # Allow large data set
-# testing to fix NoSuchEntryPoint error
-from altair_data_server import data_server
-alt.data_transformers.enable('data_server')
+
+# alt.data_transformers.enable('data_server')
+alt.data_transformers.disable_max_rows()
 
 # Get data
 wine = pd.read_csv("data/processed/wine_quality.csv")
 
 corr_df = pd.read_csv("data/processed/correlation.csv")
+
+# wine = pd.concat([wine.loc[wine["Wine"] == "red"], wine.loc[wine["Wine"] == "white"].sample(3300)])
 
 # Get a list of unique column names
 variables = corr_df["level_0"].unique()
@@ -102,9 +102,9 @@ Navigate directly to a section of your choice or scroll down to find out more.
 
 
 * [Describing the App]\n (/app-description)
-* [Describing the Data]\n (/the-data)
-* [A Fun Usage Scenario]\n (#a-fun-usage-scenario)
-* [So who are we?]\n (#who-are-we)
+* [Describing the Data](#the-data)
+* [A Fun Usage Scenario](#a-fun-usage-scenario)
+* [So who are we?](#who-are-we)
 * [Want to get involved?](#get-involved)
 * [Get in touch](#contact-us)
 * [And thank you to our data source!](#data-citation)
