@@ -23,7 +23,7 @@ def get_header(app):
                     ),
                     html.Div(
                         [dcc.Link(
-                                "Introduction",
+                                "Full view",
                                 href="/WineVison/src/full-view",
                                 className="full-view-link",
                             )

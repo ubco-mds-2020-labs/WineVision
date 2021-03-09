@@ -11,7 +11,7 @@ import dash_core_components as dcc
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 
-from src.utils import Header, make_dash_table # src.utils for heroku
+from utils import Header, make_dash_table # src.utils for heroku
 
 
 # Allow large data set

@@ -9,13 +9,15 @@ import pandas as pd
 import numpy as np
 import altair as alt
 
+
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 
-from src.pages import ( #src.pages for heroku
+
+from pages import (
     qf,
     overview,
     Wine_type
@@ -57,17 +59,18 @@ app.layout = html.Div(
 
 
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
+
 def display_page(pathname):
-    if pathname == '/WineVision/src/qf':
+    if pathname == '/WineVison/src/qf':
         return qf.create_layout(app)
 
-    elif pathname == "/WineVision/src/Wine_type":
+    elif pathname == "/WineVison/src/Wine_type":
         return Wine_type.create_layout(app)
 
-    elif pathname == "/WineVision/src/full-view":
+    elif pathname == "/WineVison/src/full-view":
         return (
-            overview.create_layout(app),
             qf.create_layout(app),
+            overview.create_layout(app),
             Wine_type.create_layout(app)
         )
 
