@@ -8,6 +8,7 @@
 import pandas as pd
 import numpy as np
 import altair as alt
+alt.data_transformers.disable_max_rows()
 import pathlib
 
 
@@ -38,9 +39,7 @@ variables = np.delete(variables, np.argwhere(variables == "Quality Factor Numeri
 # -------------------------eric data cleaning#------------------------------------------------------------------------------------------------
 
 # Allow large data set
-from altair_data_server import data_server # testing to fix NoSuchEntryPoint error
-alt.data_transformers.enable('data_server')
-
+#from altair_data_server import data_server # testing to fix NoSuchEntryPoint error
 
 app = dash.Dash(
     __name__, meta_tags=[
@@ -50,6 +49,8 @@ app = dash.Dash(
     # external_stylesheets=[dbc.themes.BOOTSTRAP],
 )
 server = app.server
+
+app.config['suppress_callback_exceptions'] = True
 
 
 # Describe the layout/ UI of the app
@@ -71,9 +72,9 @@ def display_page(pathname):
 
     elif pathname == "/WineVison/src/full-view":
         return (
-            qf.create_layout(app),
             overview.create_layout(app),
-            Wine_type.create_layout(app)
+            Wine_type.create_layout(app),
+            qf.create_layout_full_view(app)
         )
 
     else:
