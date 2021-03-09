@@ -8,6 +8,7 @@
 import pandas as pd
 import numpy as np
 import altair as alt
+alt.data_transformers.disable_max_rows()
 import pathlib
 
 
@@ -38,9 +39,7 @@ variables = np.delete(variables, np.argwhere(variables == "Quality Factor Numeri
 # -------------------------eric data cleaning#------------------------------------------------------------------------------------------------
 
 # Allow large data set
-from altair_data_server import data_server # testing to fix NoSuchEntryPoint error
-alt.data_transformers.enable('data_server')
-alt.data_transformers.disable_max_rows()
+#from altair_data_server import data_server # testing to fix NoSuchEntryPoint error
 
 app = dash.Dash(
     __name__, meta_tags=[
