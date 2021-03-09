@@ -110,18 +110,14 @@ From a business perspective, producers are constantly looking for ways to outper
 ![Wine chemistry](https://d2cbg94ubxgsnp.cloudfront.net/Pictures/480x270//9/2/5/139925_160412_PRS_AWRI_GAGO_0262.jpg)
 
 ## App Description
-The Vinho Verde wine Dashboard has three tabs; Interactive Graphics, Explore the Dataset and Machine Learning.
-
+Our dashboard has three pages: an overview, a comparison of red and white wines, and a comparison of  different wine quality levels.
 The Interactive Graphics page contains a number of graphis to explore the effects of physicochemical properties on wine quality. On the left hand side users are able to select the wine type (eg. red wine, white wine) as well as the physicochemical features of interest, with subset ranges if they so desire. Some possible visualizations are as follows:
 
-- Variable density distributions for each quality category comparing red vs white.
-- Stacked distribution of variable counts in each quality factor.
-- Scatterplot with interactive slide bar for the quality label and dropdown for property to plot against. This plot will also allow users to select a specific area and generate a bar plot demonstrating the quality distribution in this range.
-- Scatterplot to plot any two physicochemical properties against each other.
+The “Overview” page provides information on how to use the app and includes some references and further information for those interested in wine aspects the dashboard does not cover.
 
-The Explore the Dataset tab will focus on descriptive data analysis, allowing users to generate summary statistics for groups of their choice. Users will also be able to sample raw data for a closer look at the numbers.
+The second page is “Wine Type”, primarily intended to demonstrate differences between red and white wines. This page has a good layout, without leaving any large white spaces. It also demonstrates a cohesive narrative, with users able to distinguish high correlation variables from the correlation matrix and then investigating deeper using the scatter plot and density plot.
 
-Lastly, the Machine learning tab will focus on modelling and machine learning techniques. This section will be primitive in the early stage of the project, and will likely just include simple linear regression for now. We plan to expand this section when we do the project in R.
+The third page is “Quality Factors”, where users can explore features of wines in different quality groups. Users can subset the data range by selecting areas on the scatter plot, which immediately updates the other plots. The bar plot allows users to visualize quality factor proportions in their selections.. The “drag and drop” functionality makes this page particularly interactive.
 
 
 
@@ -138,13 +134,6 @@ The dataset consists of the physiochemical composition and sensory test results 
 ## A Fun Usage Scenario
 Alice is a winemaker in BC’s Okanagan Valley. She would like to create a new summer wine and hopes to take inspiration from the Vinho Verde wines, known for their refreshing qualities. Alice seeks our dashboard to better understand what wine attributes she should focus on to provide a tasting experience comparable to the very best Vinho Verde wines. However, there are some physicochemical properties she has little control over due to the soils and grape species available to her. Due to the above average alkalinity of Okanagan soil, she knows that her wines will typically be less acidic than true Vinho Verde wines, and the altitude means the chloride content will be lower as well. She wants to try to optimize the variables she has control over to make the best wine possible. She looks to our dashboard to see how Vinho Verde wines with higher pH and lower chloride content tend to fare. Looking at the interactive scatterplots, she sees that wines which have values within her possible ranges for these variables tend to be of very poor quality when they are also high in residual sugar, but less sweet wines are of good quality. She then consults the histograms and sees that there are not very many wines available that have these properties, so she knows that she will not have much direct competition should she go forward with this design. A few years later, she released this wine to broad critical acclaim and millions in profit.
 
-## Who are we?
-At heart, we are Okanagan wine enthusiasts (but when we're not drinking wine we're graduate students at the University of British Columbia). 
-Our team includes Yuxuan, Eric, Rain, and Luka. ***Optional maybe? thoughts? --> Here's a little bit more about us:***
-- *Yuxuan:*
-- *Eric*:
-- *Rain*:
-- *Luka*:
 
 ## Get involved
 If you think you can help in any of the areas listed above (and we bet you can) or in any of the many areas that we haven't yet thought of (and here we're *sure* you can) then please check out our [contributors' guidelines](https://github.com/ubco-mds-2020-labs/WineVision/blob/main/CONTRIBUTING.md) and our [roadmap](https://github.com/ubco-mds-2020-labs/WineVision/pull/1).
