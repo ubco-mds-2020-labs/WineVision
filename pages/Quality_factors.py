@@ -7,7 +7,10 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
+
 from utils import Header, make_dash_table
+
+
 
 alt.data_transformers.disable_max_rows()
 
@@ -34,10 +37,7 @@ def create_layout(app):
                          ],
                          value=["red", "white"],
                          labelStyle={"display": "block"}
-                     ),
-
-                     html.H3('Interavtive Plots'),
-                     html.H4('Drag your mouse to choose the range you want to explore!')
+                     )
                  ]),
                  dbc.Col([
                      html.H3('Select your variables:'),
