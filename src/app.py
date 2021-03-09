@@ -8,6 +8,7 @@
 import pandas as pd
 import numpy as np
 import altair as alt
+import pathlib
 
 
 import dash
@@ -15,6 +16,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
+# get relative data folder
 
 
 from pages import (
@@ -25,8 +27,8 @@ from pages import (
 
 #------------------------------------------------------
 # Get data
-wine = pd.read_csv("data/processed/wine_quality.csv")
-corr_df = pd.read_csv("data/processed/correlation.csv")
+wine = pd.read_csv("wine_quality.csv")
+corr_df = pd.read_csv("correlation.csv")
 
 # Get a list of unique column names
 variables = corr_df["level_0"].unique()
