@@ -101,8 +101,8 @@ This page is our homebase providing you information on the project.
 Navigate directly to a section of your choice or scroll down to find out more.
 
 
-* [Describing the App]\n (/app-description)
-* [Describing the Data]\n (/the-data)
+* [Describing the App]\n (overview#app-description)
+* [Describing the Data]\n (overviwe/#the-data)
 * [A Fun Usage Scenario]\n (#a-fun-usage-scenario)
 * [So who are we?]\n (#who-are-we)
 * [Want to get involved?](#get-involved)
