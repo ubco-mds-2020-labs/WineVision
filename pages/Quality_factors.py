@@ -7,7 +7,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 
-from utils import Header, make_dash_table,Header2
+from utils import Header, make_dash_table, Header2
 
 
 alt.data_transformers.disable_max_rows()
@@ -16,16 +16,16 @@ wine = pd.read_csv("data/processed/wine_quality.csv")
 
 
 def create_layout(app):
-
-    return dbc.Container(
-        [Header(app),
-         dbc.Container([
-            #  html.H1('Various Features in Different Quality Factors'),
+    return html.Div([
+        Header(app),
+        dbc.Container([
+             #  html.H1('Various Features in Different Quality Factors'),
              dbc.Row([
                  dbc.Col([
+                     html.Div(
                      dbc.Card(
                          dbc.CardBody(html.H5('Wine Type')),
-                         color='warning', inverse=True),
+                         color='warning', inverse=True)),
 
                      dcc.Checklist(
                          id="winetype",
@@ -38,7 +38,8 @@ def create_layout(app):
                      ),
 
                      html.H4('Interactive Plots'),
-                     html.H5('Drag your mouse to choose the range you want to explore!')
+                     html.H5(
+                         'Drag your mouse to choose the range you want to explore!')
                  ]),
 
                  dbc.Col([
@@ -74,75 +75,79 @@ def create_layout(app):
                  html.Iframe(
                      id="scatter_1",
                      # srcDoc = plot_scatter(),
-                     style={'border-width': '0', 'width': '120%', 'height': '700px'})
+                     style={'border-width': '0',
+                            'width': '1200px', 'height': '700px'}
+                 )
+                 # style={'border-width': '0', 'width': '120%', 'height': '700px'})
 
              ])
          ])
+    ])
 
-         ]
-    )
-   
-   
+
+
+
+
+
+
 def create_layout_fullview(app):
-
     return dbc.Container(
         [
-         dbc.Container([
-             html.H5('Various Features in Different Quality Factors'),
-             dbc.Row([
-                 dbc.Col([
-                     dbc.Card(
-                         dbc.CardBody(html.H5('Wine Type')),
-                         color='warning', inverse=True),
+            dbc.Container([
+                html.H5('Various Features in Different Quality Factors'),
+                dbc.Row([
+                    dbc.Col([
+                        dbc.Card(
+                            dbc.CardBody(html.H5('Wine Type')),
+                            color='warning', inverse=True),
 
-                     dcc.Checklist(
-                         id="winetype",
-                         options=[
-                             {"label": "White Wine", "value": "white"},
-                             {"label": "Red Wine", "value": "red"}
-                         ],
-                         value=["red", "white"],
-                         labelStyle={"display": "block"}
-                     )
-                 ]),
-                 dbc.Col([
-                     html.H5('Select your variables:'),
+                        dcc.Checklist(
+                            id="winetype",
+                            options=[
+                                {"label": "White Wine", "value": "white"},
+                                {"label": "Red Wine", "value": "red"}
+                            ],
+                            value=["red", "white"],
+                            labelStyle={"display": "block"}
+                        )
+                    ]),
+                    dbc.Col([
+                        html.H5('Select your variables:'),
 
-                     html.H5('X-axis'),
+                        html.H5('X-axis'),
 
-                     # dcc.Dropdown(
-                     #     id = "type-widget",
-                     #     options=[
-                     #         {'label': 'White', 'value': 'white'},
-                     #         {'label': 'Red', 'value': 'red'}],
-                     #     value='white', placeholder = "Select Wine Type"),
-                     dcc.Dropdown(
-                         id='xcol-widget',
-                         value='pH',
-                         options=[{'label': col, 'value': col}
-                                  for col in wine.columns],
-                         clearable=False
-                     ),
+                        # dcc.Dropdown(
+                        #     id = "type-widget",
+                        #     options=[
+                        #         {'label': 'White', 'value': 'white'},
+                        #         {'label': 'Red', 'value': 'red'}],
+                        #     value='white', placeholder = "Select Wine Type"),
+                        dcc.Dropdown(
+                            id='xcol-widget',
+                            value='pH',
+                            options=[{'label': col, 'value': col}
+                                     for col in wine.columns],
+                            clearable=False
+                        ),
 
-                     html.H5("Y-axis"),
+                        html.H5("Y-axis"),
 
-                     dcc.Dropdown(
-                         id='ycol-widget',
-                         value='pH',
-                         options=[{'label': col, 'value': col}
-                                  for col in wine.columns],
-                         clearable=False
-                     ),
-                 ]),
+                        dcc.Dropdown(
+                            id='ycol-widget',
+                            value='pH',
+                            options=[{'label': col, 'value': col}
+                                     for col in wine.columns],
+                            clearable=False
+                        ),
+                    ]),
 
-                 html.Iframe(
-                     id="scatter_1",
-                     # srcDoc = plot_scatter(),
-                     style={'border-width': '0', 'width': '120%', 'height': '700px'})
+                    html.Iframe(
+                        id="scatter_1",
+                        # srcDoc = plot_scatter(),
+                        style={'border-width': '0', 'width': '120%', 'height': '700px'})
 
-             ])
-         ])
+                ])
+            ])
 
-         ]
+        ]
     )
-  
