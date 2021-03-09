@@ -20,7 +20,7 @@ def create_layout(app):
     return dbc.Container(
         [Header(app),
          dbc.Container([
-             html.H5('Various Features in Different Quality Factors'),
+            #  html.H1('Various Features in Different Quality Factors'),
              dbc.Row([
                  dbc.Col([
                      dbc.Card(
