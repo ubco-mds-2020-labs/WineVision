@@ -69,7 +69,6 @@ def display_page(pathname):
 # Rain
 
 
-
 # Set up callbacks/backend
 @app.callback(
      Output('scatter_1','srcDoc'),
@@ -121,11 +120,6 @@ def plot_scatter(xcol,ycol, winetype):
     chart = (points & bars | hists).add_selection(click)
     return chart.to_html()
 
-
-
-
-
-#------------------------------------------------------------------------------------------------
 
 
 
