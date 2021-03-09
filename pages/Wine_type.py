@@ -1,29 +1,27 @@
-#import os
-#os.chdir('../../')
-
 import pandas as pd
 import numpy as np
 import altair as alt
-import pathlib
+
 import dash
 import dash_html_components as html
 import dash_core_components as dcc
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
+# from altair_data_server import data_server
 
-from utils import Header, make_dash_table # src.utils for heroku
+from utils import Header, make_dash_table
 
-PATH = pathlib.Path(__file__).parent
-print(PATH)
-DATA_PATH = PATH.joinpath("../processed").resolve()
+
 # Allow large data set
-from altair_data_server import data_server # testing to fix NoSuchEntryPoint error
-alt.data_transformers.enable('data_server')
+# alt.data_transformers.enable('data_server')
+alt.data_transformers.disable_max_rows()
 
 # Get data
 wine = pd.read_csv("data/processed/wine_quality.csv")
 
 corr_df = pd.read_csv("data/processed/correlation.csv")
+
+# wine = pd.concat([wine.loc[wine["Wine"] == "red"], wine.loc[wine["Wine"] == "white"].sample(3300)])
 
 # Get a list of unique column names
 variables = corr_df["level_0"].unique()

@@ -1,29 +1,18 @@
-# -*- coding: utf-8 -*-
-#import os
-#import sys
-#print(os.getcwd())
-#sys.path.insert(0, '../src')
-#print(os.getcwd())
-
 import pandas as pd
 import numpy as np
 import altair as alt
-alt.data_transformers.disable_max_rows()
-import pathlib
-
 
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
-# get relative data folder
+# from altair_data_server import data_server
 
-
-from pages import (
-    qf,
+from pages import ( 
+    Quality_factors,
     overview,
-    Wine_type
+    Wine_type,
 )
 
 #------------------------------------------------------
@@ -31,15 +20,18 @@ from pages import (
 wine = pd.read_csv("data/processed/wine_quality.csv")
 corr_df = pd.read_csv("data/processed/correlation.csv")
 
+# wine = pd.concat([wine.loc[wine["Wine"] == "red"], wine.loc[wine["Wine"] == "white"].sample(3300)])
+
 # Get a list of unique column names
 variables = corr_df["level_0"].unique()
 variables = np.delete(variables, np.argwhere(variables == "Quality Factor"))
 variables = np.delete(variables, np.argwhere(variables == "Quality Factor Numeric")) #Don't want this as an option in scatterplot
 
-# -------------------------eric data cleaning#------------------------------------------------------------------------------------------------
 
 # Allow large data set
-#from altair_data_server import data_server # testing to fix NoSuchEntryPoint error
+# from altair_data_server import data_server 
+# alt.data_transformers.enable('data_server')
+alt.data_transformers.disable_max_rows()
 
 app = dash.Dash(
     __name__, meta_tags=[
@@ -50,9 +42,6 @@ app = dash.Dash(
 )
 server = app.server
 
-app.config['suppress_callback_exceptions'] = True
-
-
 # Describe the layout/ UI of the app
 app.layout = html.Div(
     [dcc.Location(id="url", refresh=False), html.Div(id="page-content")]
@@ -60,21 +49,19 @@ app.layout = html.Div(
 
 # Update page
 
-
 @app.callback(Output("page-content", "children"), [Input("url", "pathname")])
-
 def display_page(pathname):
     if pathname == '/WineVison/src/qf':
-        return qf.create_layout(app)
+        return Quality_factors.create_layout(app)
 
     elif pathname == "/WineVison/src/Wine_type":
         return Wine_type.create_layout(app)
 
-    elif pathname == "/WineVison/src/full-view":
+    elif pathname == "/WineVision/src/full-view":
         return (
             overview.create_layout(app),
-            Wine_type.create_layout(app),
-            qf.create_layout_full_view(app)
+            Quality_factors.create_layout(app),
+            Wine_type.create_layout(app)
         )
 
     else:
