@@ -10,14 +10,13 @@ import numpy as np
 import altair as alt
 import pathlib
 
-
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
 import dash_bootstrap_components as dbc
 # get relative data folder
-
+alt.data_transformers.disable_max_rows()
 
 from pages import (
     qf,
