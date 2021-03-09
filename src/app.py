@@ -40,7 +40,7 @@ variables = np.delete(variables, np.argwhere(variables == "Quality Factor Numeri
 # Allow large data set
 from altair_data_server import data_server # testing to fix NoSuchEntryPoint error
 alt.data_transformers.enable('data_server')
-
+alt.data_transformers.disable_max_rows()
 
 app = dash.Dash(
     __name__, meta_tags=[
