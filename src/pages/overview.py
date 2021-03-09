@@ -94,6 +94,22 @@ def create_layout(app):
             className="twelve columns"),
             html.Div(
          dcc.Markdown('''
+## Welcome!
+ Hello and thank you for stopping by the [Wine Vision App](https://wine-vision.herokuapp.com/)! :confetti_ball::balloon::confetti_ball::balloon:
+
+This page is our homebase providing you information on the project. 
+Navigate directly to a section of your choice or scroll down to find out more.
+
+
+* [Describing the App]\n (/app-description)
+* [Describing the Data](#the-data)
+* [A Fun Usage Scenario](#a-fun-usage-scenario)
+* [So who are we?](#who-are-we)
+* [Want to get involved?](#get-involved)
+* [Get in touch](#contact-us)
+* [And thank you to our data source!](#data-citation)
+
+![GIF](https://media1.giphy.com/media/lNWY2wwQx21NoXwBGF/giphy.gif)
 
 ### The problem
 Wine making has always been a traditional practice passed down for many generations; yet, some of wine's secrets are still a mystery to most people, even wine producers! So how are we supposed to craft the perfect wine without knowing what makes it perfect (speaking from both a consumer and business perspective)?
@@ -122,7 +138,7 @@ The Explore the Dataset tab will focus on descriptive data analysis, allowing us
 Lastly, the Machine learning tab will focus on modelling and machine learning techniques. This section will be primitive in the early stage of the project, and will likely just include simple linear regression for now. We plan to expand this section when we do the project in R.
 
 
-![GIF](https://media1.giphy.com/media/lNWY2wwQx21NoXwBGF/giphy.gif)
+
 
 ## The Data
 Portugal is second in the world for per-capita wine consumption [2](https://www.nationmaster.com/nmx/ranking/wine-consumption-per-capita) and eleventh for wine production [3](https://en.wikipedia.org/wiki/List_of_wine-producing_regions), so by no coincidence we built our dashboard on the famous Portuguese wine quality data set from Cortez et al., 2009. 
