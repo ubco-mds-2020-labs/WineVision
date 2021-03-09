@@ -90,19 +90,10 @@ def create_layout(app):
             html.Div(
          dcc.Markdown('''
 ## Welcome!
- Hello and thank you for stopping by the [Wine Vision App](https://wine-vision.herokuapp.com/)! :confetti_ball::balloon::confetti_ball::balloon:
-
-This page is our homebase providing you information on the project. 
-Navigate directly to a section of your choice or scroll down to find out more.
+##### Hello and thank you for stopping by the [Wine Vision App](https://wine-vision.herokuapp.com/)! 
+##### This page is our homebase providing you information on the project. 
 
 
-* [Describing the App]\n (/app-description)
-* [Describing the Data](#the-data)
-* [A Fun Usage Scenario](#a-fun-usage-scenario)
-* [So who are we?](#who-are-we)
-* [Want to get involved?](#get-involved)
-* [Get in touch](#contact-us)
-* [And thank you to our data source!](#data-citation)
 
 ![GIF](https://media1.giphy.com/media/lNWY2wwQx21NoXwBGF/giphy.gif)
 
@@ -156,19 +147,19 @@ Our team includes Yuxuan, Eric, Rain, and Luka. ***Optional maybe? thoughts? -->
 - *Luka*:
 
 ## Get involved
-If you think you can help in any of the areas listed above (and we bet you can) or in any of the many areas that we haven't yet thought of (and here we're *sure* you can) then please check out our [contributors' guidelines](CONTRIBUTING.md) and our [roadmap](../../issues/1).
+If you think you can help in any of the areas listed above (and we bet you can) or in any of the many areas that we haven't yet thought of (and here we're *sure* you can) then please check out our [contributors' guidelines](https://github.com/ubco-mds-2020-labs/WineVision/blob/main/CONTRIBUTING.md) and our [roadmap](https://github.com/ubco-mds-2020-labs/WineVision/pull/1).
 
-Please note that it's very important to us that we maintain a positive and supportive environment for everyone who wants to participate. When you join us we ask that you follow our [code of conduct](CODE_OF_CONDUCT.md) in all interactions both on and offline.
+Please note that it's very important to us that we maintain a positive and supportive environment for everyone who wants to participate. When you join us we ask that you follow our [code of conduct](https://github.com/ubco-mds-2020-labs/WineVision/blob/main/CODE_OF_CONDUCT.md) in all interactions both on and offline.
 
 ## Contact us
-If you want to report a problem or suggest an enhancement we'd love for you to [open an issue](../../issues) at this github repository because then we can get right on it.
+If you want to report a problem or suggest an enhancement we'd love for you to [open an issue](https://github.com/ubco-mds-2020-labs/WineVision/issues) at this github repository because then we can get right on it.
 
 ## Data Citation
 Paulo Cortez, University of Minho, Guimarães, Portugal, http://www3.dsi.uminho.pt/pcortez
 A. Cerdeira, F. Almeida, T. Matos and J. Reis, Viticulture Commission of the Vinho Verde Region(CVRVV), Porto, Portugal
 @2009
 '''),
-         style={"font-size": "1.825rem"}
+         style={"font-size": "1.925rem"}
          )
 
 
