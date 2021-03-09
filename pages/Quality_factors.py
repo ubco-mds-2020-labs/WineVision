@@ -22,11 +22,11 @@ def create_layout(app):
     return dbc.Container(
         [Header(app),
          dbc.Container([
-             html.H1('Various Features in Different Quality Factors'),
+             html.H5('Various Features in Different Quality Factors'),
              dbc.Row([
                  dbc.Col([
                      dbc.Card(
-                         dbc.CardBody(html.H4('Wine Type')),
+                         dbc.CardBody(html.H5('Wine Type')),
                          color='warning', inverse=True),
 
                      dcc.Checklist(
@@ -40,9 +40,9 @@ def create_layout(app):
                      )
                  ]),
                  dbc.Col([
-                     html.H3('Select your variables:'),
+                     html.H5('Select your variables:'),
 
-                     html.H4('X-axis'),
+                     html.H5('X-axis'),
 
                      # dcc.Dropdown(
                      #     id = "type-widget",
@@ -58,7 +58,7 @@ def create_layout(app):
                          clearable=False
                      ),
 
-                     html.H4("Y-axis"),
+                     html.H5("Y-axis"),
 
                      dcc.Dropdown(
                          id='ycol-widget',
