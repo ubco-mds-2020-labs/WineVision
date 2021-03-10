@@ -57,11 +57,11 @@ def create_layout(app):
                             html.H6(
                                 "\
                                     Wine is a multi billion dollar global industry. \
-                                With 36 billion bottles of wine produced each year 1,producers are constantly looking for ways to outperform \
+                                With 36 billion bottles of wine produced each year ,producers are constantly looking for ways to outperform \
                                 the competition and create the best wines they can. \
                                 Portugal in particular is second in the world for per-capita wine \
-                                consumption 2 and eleventh for wine production, creating over 600,000 \
-                                litres per year 3.Physicochemical components are fundamental to a wine’s quality \
+                                consumption  and eleventh for wine production, creating over 600,000 \
+                                litres per year .Physicochemical components are fundamental to a wine’s quality \
                                 and those who understand this aspect of wine will have a greater edge into crafting an enjoyable \
                                 and profitable product.Wine quality evaluation is the main part of the certification process to \
                                 improve wine making. It is generally assessed by physicochemical tests and sensory analysis. \
